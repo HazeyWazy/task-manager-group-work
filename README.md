@@ -23,22 +23,18 @@ Implement a <create-task> component (based on <edit-task>)
 
 # Widget Delegation 
 ------
-(just remove unchosen)
-Task Summary Widget -
 
-Calendar Widget -
 
-Task Timer Widget -
+Task Summary Widget - Danica 
 
-Weekly Summary Widget -  
+Calendar Widget - Htet Yamin
 
-Memory Game Widget -
+Task Timer Widget - Lawrence 
 
-Mood Widget -
+Weekly Summary Widget -  Wai Lin
 
-Game Widget - 
 
-Exploding Task Widget -
+
 
 
 ## Widget Descriptions 
@@ -57,11 +53,3 @@ implements a count down timer that you can set to a given time, e.g. 15 minutes,
  shows a list of the tasks that are due this week that aren't on the Done board in order of due date.
 Memory Game Widget **: Implements a memory game based on the task list. When activated, blanks out the page and asks a question like 'what is the priority of the top task on Todo?'.
  
-## Mood Widget : 
- shows different colours and patterns, is affected in some way by the time of day, day of week and the number of tasks in one or more of the categories  (e.g. bright sparkles on friday when there are no more Todo tasks).
-
-## Game Widget :
- within reason, adapt a game implementation (eg. tic-tac-toe, not Doom) as a web component widget.  Game code can be from a third party (with acknowledgement) but you must port it to this framework and make it work with the rest of the app.
-
-## Exploding Task Widget :
- shows a red button that when pressed, causes all tasks to explode in a dramatic graphical manner. When the dust settles, all of the tasks have been moved  to the Done board.
