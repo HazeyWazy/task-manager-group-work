@@ -19,22 +19,17 @@ improve the task edit form dialog (<edit-task>) layout
 Implement task deletion
 Implement a <create-task> component (based on <edit-task>)
 
+Extending task card - Htet Yamin
 
 
 # Widget Delegation 
 ------
 
-
 Task Summary Widget - Danica 
-
-Calendar Widget - Htet Yamin
 
 Task Timer Widget - Lawrence 
 
 Weekly Summary Widget -  Wai Lin
-
-
-
 
 
 ## Widget Descriptions 
@@ -42,9 +37,6 @@ Weekly Summary Widget -  Wai Lin
 
 ##  Task Summary Widget : 
 shows statistics from the currently displayed tasks, how many  tasks in each category, how many high priority tasks, how many due today.  Updates when tasks are added, removed or changed.
-
-## Calendar Widget :
- shows the calendar for the current month and highlights the   current day and days where tasks are due.  Optionally, allows display of other months via interactive controls.
 
 ##  Task Timer Widget : 
 implements a count down timer that you can set to a given time, e.g. 15 minutes, counts down and sounds an alarm/flashes the screen when the time  is up.
