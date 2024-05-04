@@ -1,6 +1,7 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import {TaskModel} from '../models.js';
 import './task-card.js';
+import {taskPanels} from './shareStyle.js';
 
 /**
  * TaskBoard <task-board category="XXX">
@@ -13,27 +14,8 @@ class TaskBoard extends LitElement {
     _message: {state: true},
   };
 
-  static styles = css`
-    :host {
-        display: block;
-        background-color: #d0cb65;
-        color: #ffcc33;
-        border: 1px solid red;
-        padding: 10px;
-        margin: 10px;
-        width: 250px;
-        height: 80dvh;
-    }
-    :host input {
-        width: 5em;
-    }
-    .task-actions {
-      display: block;
-    }
-    .task-actions li {
-      display: inline-block;
-    }
-  `;
+  static styles = [taskPanels]
+
 
   constructor() {
     super();
