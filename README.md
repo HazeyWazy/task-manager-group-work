@@ -20,7 +20,7 @@ Implement task deletion
 Implement a <create-task> component (based on <edit-task>)
 
 Extending task card - Htet Yamin
-
+improve the layout and display of the task card -danica
 
 # Widget Delegation 
 ------
