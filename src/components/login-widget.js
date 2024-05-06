@@ -139,7 +139,7 @@ class LoginWidget extends LitElement {
 
   render() {
     if (this._user) {
-      return html`<p>Logged in as <br> ${this._user.name}</p>
+      return html`<p>Logged in as ${this._user.name}</p>
               <button @click=${this._logout}>Logout</button>`;
     }
     return html`
