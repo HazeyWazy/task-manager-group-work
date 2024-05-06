@@ -16,8 +16,94 @@ class LoginWidget extends LitElement {
 
   static styles = css`
     :host {
-        display: block;
-    }`;
+      display: flex;
+    }
+
+    p {
+      margin-right: 1rem;
+      font-size: 1rem;
+      padding-left: 3.7rem;
+    }
+    
+    button {
+      margin: auto auto;
+      padding: 0.6vw 1vw;
+      border-radius: 0.4vw;
+      transition-duration: 0.4s;
+      background-color: #2e323d;
+      color: #faf9ff;
+      border: solid 1px #faf9ff;
+    }
+
+    button:hover {
+      cursor: pointer;
+      background-color: #faf9ff;
+      color: #2e323d;
+      border: solid 1px #2e323d;
+      box-shadow: 0 0 0 0.15vw #717788;
+    }
+
+    button:active {
+      cursor: pointer;
+      background-color: #faf9ff;
+      color: #2e323d;
+      border: solid 1px #2e323d;
+      transform: translateY(3px);
+      box-shadow: none;
+    }
+
+    form input[name='username'],
+    input[type='password'] {
+      color: #2e323d;
+      background-color: #faf9ff;
+      box-shadow: 0 0 .4vw rgba(0, 0, 0, 0.5), 0 0 0 .15vw transparent;
+      border-radius: 0.4vw;
+      border: none;
+      outline: none;
+      padding: 0.4vw;
+      max-width: 190px;
+      transition: 0.4s;
+      margin-right: 0.5rem;
+    }
+
+    form input[name='username']:hover,
+    input[type='password']:hover {
+      box-shadow: 0 0 0 0.15vw #717788;
+    }
+
+    form input[name='username']:focus,
+    input[type='password']:focus {
+      box-shadow: 0 0 0 0.15vw #5072a9;
+    }
+
+    input[type='submit'] {
+      margin: auto auto;
+      padding: 0.6vw 1vw;
+      border-radius: 0.4vw;
+      transition-duration: 0.4s;
+      background-color: #2e323d;
+      color: #faf9ff;
+      border: solid 1px #faf9ff;
+    }
+
+    input[type='submit']:hover {
+      cursor: pointer;
+      background-color: #faf9ff;
+      color: #2e323d;
+      border: solid 1px #2e323d;
+      box-shadow: 0 0 0 0.15vw #717788;
+    } 
+
+    input[type='submit']:active {
+      cursor: pointer;
+      background-color: #faf9ff;
+      color: #2e323d;
+      border: solid 1px #2e323d;
+      transform: translateY(3px);
+      box-shadow: none;
+    }
+    
+    `;
 
   constructor() {
     super();
@@ -53,7 +139,7 @@ class LoginWidget extends LitElement {
 
   render() {
     if (this._user) {
-      return html`<p>Logged in as ${this._user.name}</p>
+      return html`<p>Logged in as <br> ${this._user.name}</p>
               <button @click=${this._logout}>Logout</button>`;
     }
     return html`

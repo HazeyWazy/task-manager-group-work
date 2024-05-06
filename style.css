@@ -11,21 +11,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color: #C6C7BC;
-    
-  }
-
-/* 
-  header {
-    color: #C0B3AB ;
-  } */
+    background-color: #faf9ff;
+}
 
 h3 {
  color: #A1989F;
 }
 
 .task-board{
-
     padding-left: 20px;
 }
 

@@ -38,6 +38,26 @@ class Comp2110TaskManager extends LitElement {
     .app-footer a {
       margin-left: 5px;
     }
+
+    header {
+      background-color: #2e323d;
+      color: #faf9ff;
+      padding-top: 1px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: flex-end;
+      align-items: center;
+      position: sticky;
+    }
+
+    header h1 {
+      margin-right: auto;
+      font-size: 1.8rem;
+    }
+    
   `;
 
   constructor() {
