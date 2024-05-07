@@ -5,6 +5,7 @@ import './components/widget-container.js';
 import './components/ad-widget.js';
 import './components/login-widget.js';
 import './components/task-manager.js';
+import './components/widget-summary.js';
 import './components/weekly-summary.js';
 
 /**
@@ -28,7 +29,7 @@ class Comp2110TaskManager extends LitElement {
 
     main {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
     }
 
     .app-footer {
@@ -77,7 +78,7 @@ class Comp2110TaskManager extends LitElement {
         <task-manager></task-manager>     
         <widget-container header="Widgets">
           <ad-widget></ad-widget>
-          <widget-block header="Widget 1"></widget-block>
+          <widget-summary></widget-summary>
           <widget-block header="Widget 2"></widget-block>
           <weekly-summary></weekly-summary>
         </widget-container>

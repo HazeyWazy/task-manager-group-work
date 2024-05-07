@@ -1,25 +1,102 @@
-import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
-import {TaskModel} from '../models.js';
+import {
+  LitElement,
+  html,
+  css,
+} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
+import { TaskModel } from '../models.js';
 import './edit-task.js';
-import {taskCard} from './shareStyle.js';
 
-/**
- * TaskCard <task-card id=N>
- * Display the details of the task with id N in a 'card'
- * as part of the task board
- */
 class TaskCard extends LitElement {
   static properties = {
-    id: 0,
-    _task: {state: true},
+    id: { type: Number },
+    _task: { state: true },
+    expanded: { type: Boolean },
+    contentThreshold: { type: Number },
+    showPopup: { type: Boolean },
   };
 
-  static styles = [taskCard]
+  static styles = css`
+    :host {
+      display: block;
+      width: 20vw;
+      background-color: #dae0ef;
+      border-radius: 20px;
+      color: black;
+    } 
+
+    h2 {
+      padding-top:10px;
+      font-size: large;
+      border-radius: 50px 50px;
+    } 
+
+    .collapsed {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .expanded {
+      white-space: normal;
+      overflow: visible;
+    }
+
+    .expand-button {
+      padding: 0.3vw 1.2vw;
+      border-radius: 0.4vw;
+      transition-duration: 0.4s;
+      background-color: #387ef5;
+      color: #faf9ff;
+      margin-bottom: 10px;
+      border: none;
+      font-size: 15px;
+    }
+
+    .expand-button:hover {
+      background-color: #0063D6;
+    }
+
+    .popup-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: black;
+      z-index: 2;
+      display: none;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      display: none;
+    }
+
+    .popup-container.visible,
+    .popup-overlay.visible {
+      display: block;
+    }
+  `;
+
+  constructor() {
+    super();
+    this.expanded = false;
+    this.showPopup = false;
+    this.contentThreshold = 30; // Change this threshold as needed
+  }
 
   connectedCallback() {
     super.connectedCallback();
     this._loadData();
-    // set up an event listener to load new tasks when they change
     window.addEventListener('tasks', () => {
       this._loadData();
     });
@@ -29,24 +106,75 @@ class TaskCard extends LitElement {
     this._task = TaskModel.getTask(this.id);
   }
 
+  toggleContent() {
+    this.expanded = !this.expanded;
+  }
+
+  togglePopup() {
+    this.showPopup = !this.showPopup;
+  }
+
   render() {
+    // Check if _task is available
     if (this._task) {
+      // Convert timestamp and due date strings to Date objects
       const ts = new Date(parseInt(this._task.timestamp));
       const due = new Date(parseInt(this._task.due));
-      return html`
-      <div>
-        <h2>${this._task.summary}</h2>
-        <p class='task-timestamp'>${ts.toDateString()}</p>
-        <p class='task-due'>${due.toDateString()}</p>
-        <p class='task-content'>${this._task.text}</p>
-        <p class='task-priority'>${this._task.priority}</p>
 
-        <edit-task id=${this.id}></edit-task>
-      </div>
+      // Return HTML template
+      return html`
+        <div>
+          <!-- Display task summary -->
+          <h2>${this._task.summary}</h2>
+          <!-- Display task timestamp -->
+          <p class="task-timestamp">${ts.toDateString()}</p>
+          <!-- Display task due date -->
+          <p class="task-due">${due.toDateString()}</p>
+          <!-- Check if task text length is greater than contentThreshold -->
+          ${this._task.text.length > this.contentThreshold
+            ? html`
+                <!-- Display task text with option to expand/collapse -->
+                <p class=${this.expanded ? 'expanded' : 'collapsed'}>
+                  <!-- Show full text if expanded, otherwise show truncated text -->
+                  ${this.expanded
+                    ? this._task.text
+                    : html`${this._task.text.substring(
+                        0,
+                        this.contentThreshold
+                      )}...`}
+                </p>
+                <!-- Button to expand/collapse task text -->
+                <span class="expand-button" @click=${this.togglePopup}>
+                  ${this.expanded ? 'Collapse' : 'Expand'}
+                </span>
+              `
+            : html`
+                <!-- Display full task text if it's shorter than contentThreshold -->
+                <p>${this._task.text}</p>
+              `}
+          <!-- Display task priority -->
+          <p class="task-priority">${this._task.priority}</p>
+          <!-- Display edit-task component -->
+          <edit-task id=${this.id}></edit-task>
+          <!-- Display popup overlay if showPopup is true -->
+          <div
+            class="popup-overlay ${this.showPopup ? 'visible' : ''}"
+            @click=${this.togglePopup}
+          ></div>
+          <!-- Display popup container if showPopup is true -->
+          <div class="popup-container ${this.showPopup ? 'visible' : ''}">
+            <!-- Display full task text in popup -->
+            <p>${this._task.text}</p>
+            <!-- Button to close popup -->
+            <button @click=${this.togglePopup}>Close</button>
+          </div>
+        </div>
       `;
     } else {
+      // Display "Loading..." message if _task is not available
       return html`<div>Loading...</div>`;
     }
   }
 }
+
 customElements.define('task-card', TaskCard);
