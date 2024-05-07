@@ -5,7 +5,6 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import {TaskModel} from '../models.js';
 import {widgetDesign} from './shareStyle.js';
-import './task-card.js';
 import './task-board.js';
 class WidgetSummary extends LitElement {
 
@@ -43,7 +42,7 @@ class WidgetSummary extends LitElement {
             <p class='doneTasks'> Scheduled Tasks: ${countToDo()} </p>
             <p class='currentTasks'> Current tasks: ${countDoing()}</p>
             <p class='toDo'> Done: ${countDone()}</p>
-            <p class='dueToday'> Due Today: ${this._due.length}</p>
+            <p class='dueToday'> Due Today: ${dueDate()}</p>
             </div>
 
 
@@ -75,21 +74,37 @@ function countDoing() {
 function countDone() {
 
     done= TaskModel.getTasks('Done').length;
-
     
     return done;
 }
 
 const date = new Date(); 
 
-// function dueDate() {
+function dueDate() {
 
-//     due = this._due.length
+    let doneDue ={};
+    let doneDueCount = 0;
+    due = TaskModel.getTasksForDay(date).length
+    doneDue = TaskModel.getTasks('Done')
 
-//     // if (this._due._tasks != TaskModel.getTasks('Done'))
+    for (let i =0; i< doneDue.length; i++){
+        let dueDate = new Date(parseInt(doneDue[i].due));
 
-//     return due;
-// }
+        if (date.toDateString() === dueDate.toDateString()) {
+        
+            doneDueCount++;
+
+        }
+
+    }
+    due = due-doneDueCount;
+    
+    if (due<0){
+         due = 0;
+     }
+
+    return due;
+}
 
 
 
