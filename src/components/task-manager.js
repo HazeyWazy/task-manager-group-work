@@ -15,8 +15,8 @@ class TaskManager extends LitElement {
 
   static styles = css`
     .task-manager {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
     }
   `;
 

@@ -44,7 +44,6 @@ export const font = css`
 export const taskCard = css `
 :host {
     display: block;
-
     background-color: #A1989F;
     color: #181B29;
     border-radius: 50px 50px;

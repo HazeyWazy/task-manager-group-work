@@ -1,7 +1,6 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import {TaskModel} from '../models.js';
 import './edit-task.js';
-import {taskCard} from './shareStyle.js';
 
 /**
  * TaskCard <task-card id=N>
@@ -14,7 +13,23 @@ class TaskCard extends LitElement {
     _task: {state: true},
   };
 
-  static styles = [taskCard]
+  static styles = css`
+  :host {
+    display: block;
+    width: 20vw;
+    background-color: #dae0ef;
+    border-radius: 20px;
+    color: black;
+  } 
+  :host input {
+    width: 5em;
+  }
+  h2 {
+    padding-top:10px;
+    font-size: large;
+    border-radius: 50px 50px;
+  } 
+  `;
 
   connectedCallback() {
     super.connectedCallback();
