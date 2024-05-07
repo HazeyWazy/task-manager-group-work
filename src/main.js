@@ -28,7 +28,7 @@ class Comp2110TaskManager extends LitElement {
 
     main {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
     }
 
     .app-footer {
