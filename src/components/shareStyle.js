@@ -62,3 +62,26 @@ edit-task {
     
 }
 `
+export const widgetDesign = css `
+:host {
+    display: block;
+    width: 250px;
+    height: 250px;
+    background-color: #C0B3AB;
+    border: 1px solid #545B6D;
+    font-family: monospace;
+}
+
+h3 {
+    color: #181B29
+}
+
+div {
+    padding-left: 20px;
+    text-align: left;
+    color: #545B6D;
+    line-height: 0.8;
+   
+}
+
+`
