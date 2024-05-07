@@ -10,8 +10,10 @@ import './task-board.js';
 class WidgetSummary extends LitElement {
 
     static properties = {
+        category: {},
         header: {type: String},
         _tasks: {state: true},
+        _due: {state: true},
     }
     
     static styles = [widgetDesign]
@@ -29,6 +31,7 @@ class WidgetSummary extends LitElement {
       _loadData() {
         // get the up to date summary
         this._tasks = TaskModel.getTasks(this.category);
+        this._due = TaskModel.getTasksForDay(Date);
         this.render();
       }
 
@@ -40,6 +43,7 @@ class WidgetSummary extends LitElement {
             <p class='doneTasks'> Scheduled Tasks: ${countToDo()} </p>
             <p class='currentTasks'> Current tasks: ${countDoing()}</p>
             <p class='toDo'> Done: ${countDone()}</p>
+            <p class='dueToday'> Due: ${this._due}</p>
             </div>
 
 
@@ -56,15 +60,23 @@ let due =0;
 
 function countToDo() {
 
+    scheduled= TaskModel.getTasks('ToDo').length;
+
     return scheduled;
 }
 
 function countDoing() {
 
+    current= TaskModel.getTasks('Doing').length;
+
     return current;
 }
 
 function countDone() {
+
+    done= TaskModel.getTasks('Done').length;
+
+    
     return done;
 }
 
