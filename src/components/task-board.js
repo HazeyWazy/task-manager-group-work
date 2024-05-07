@@ -14,7 +14,36 @@ class TaskBoard extends LitElement {
     _message: {state: true},
   };
 
-  static styles = [taskPanels]
+  static styles = css`
+  :host {    
+    background-color: purple;
+    color: white;
+    border: 10px solid #03045e;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    width: 22vw;
+    height: 120dvh;
+    background-color: #0077b6;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  :host input {
+      width: 5em;
+  }
+  .task-actions {
+    display: block;
+  }
+  .task-actions li {
+    display: inline-block;
+  }
+
+  h3 {
+    color: #181B29
+  }
+  `;
 
 
   constructor() {
