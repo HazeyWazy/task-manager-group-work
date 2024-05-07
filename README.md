@@ -43,5 +43,5 @@ implements a count down timer that you can set to a given time, e.g. 15 minutes,
 
 ## Weekly Summary Widget :
  shows a list of the tasks that are due this week that aren't on the Done board in order of due date.
-Memory Game Widget **: Implements a memory game based on the task list. When activated, blanks out the page and asks a question like 'what is the priority of the top task on Todo?'.
+
  

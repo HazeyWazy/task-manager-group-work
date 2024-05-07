@@ -31,7 +31,7 @@ class WidgetSummary extends LitElement {
       _loadData() {
         // get the up to date summary
         this._tasks = TaskModel.getTasks(this.category);
-        this._due = TaskModel.getTasksForDay(Date);
+        this._due = TaskModel.getTasksForDay(date);
         this.render();
       }
 
@@ -43,7 +43,7 @@ class WidgetSummary extends LitElement {
             <p class='doneTasks'> Scheduled Tasks: ${countToDo()} </p>
             <p class='currentTasks'> Current tasks: ${countDoing()}</p>
             <p class='toDo'> Done: ${countDone()}</p>
-            <p class='dueToday'> Due: ${this._due}</p>
+            <p class='dueToday'> Due Today: ${this._due.length}</p>
             </div>
 
 
@@ -56,7 +56,7 @@ let scheduled = 0;
 let current =0;
 let done = 0;
 let prio = 0;
-let due =0;
+let due = 0;
 
 function countToDo() {
 
@@ -80,7 +80,16 @@ function countDone() {
     return done;
 }
 
+const date = new Date(); 
 
+// function dueDate() {
+
+//     due = this._due.length
+
+//     // if (this._due._tasks != TaskModel.getTasks('Done'))
+
+//     return due;
+// }
 
 
 
