@@ -67,7 +67,7 @@ export const widgetDesign = css `
     display: block;
     width: 250px;
     height: 250px;
-    background-color: #C0B3AB;
+    background-color: #dae0ef;
     border: 1px solid #545B6D;
     font-family: monospace;
 }
