@@ -3,10 +3,14 @@
 //due today
 
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
-
+import './task-card.js';
+import './task-board.js';
+import './task-manager.js';
+import {widgetDesign} from './shareStyle.js';
 class WidgetSummary extends LitElement {
 
     static properties () {
+        header: {type: String};
         let DoneTasks = 0;
         let CurrentTasks =0;
         let ToDo = 0;
@@ -14,46 +18,25 @@ class WidgetSummary extends LitElement {
         let Today =0;
     }
     
+    static styles = [widgetDesign]
 
-    countTasks () {
+    constructor() {
+        super();
+        this.header = 'Task Summary';
+      }
 
-        let done =0;
-        let current =0;
-        let todo = 0;
-        let high =0;
-        let now =0;
 
-//placeholder numbers     
-        for (let i = 0; i < 3; i++){ //loop task board
-            for (let n =0; n< 5; n++) { //loop tasks in task board
 
-//check priority
-/* if _.priority >4 {
-    high++;
-}
-*/
-//check date
-/*
-if _.date == today'sdate{
-    now++;
-}
-
-*/
-            }
-//record numbers
-/*
-
-DoneTasks = done;
-CurrentTasks =current;
-ToDo = todo;
-HighPrio = high;
-Today =now;
-
-*/
-
-        }
-    }
+    render() {
+        return html`
+            <h3>${this.header}</h3>
+        `;
+      }
 
 }
+
+
+
+
 
 customElements.define('widget-summary', WidgetSummary);

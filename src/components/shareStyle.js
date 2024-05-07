@@ -63,3 +63,12 @@ edit-task {
     
 }
 `
+export const widgetDesign = css `
+:host {
+    display: block;
+    width: 250px;
+    height: 250px;
+    background-color: azure;
+    border: 1px solid black;
+}
+`
