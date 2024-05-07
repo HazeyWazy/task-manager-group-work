@@ -16,22 +16,18 @@ class TaskBoard extends LitElement {
 
   static styles = css`
   :host {    
-    background-color: purple;
-    color: white;
-    border: 10px solid #03045e;
     border-radius: 20px;
     padding: 10px;
     margin: 10px;
     width: 22vw;
-    height: 120dvh;
-    background-color: #0077b6;
+    background-color: #AAB6D6;
     display: flex;
     justify-content: center;
     overflow: auto;
   }
 
   :host input {
-      width: 5em;
+    width: 5em;
   }
   .task-actions {
     display: block;
@@ -41,7 +37,8 @@ class TaskBoard extends LitElement {
   }
 
   h3 {
-    color: #181B29
+    font-size: 1.5rem;
+    color: #2E323D;
   }
   `;
 
