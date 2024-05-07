@@ -42,6 +42,7 @@ class WidgetSummary extends LitElement {
             <p class='doneTasks'> Scheduled Tasks: ${countToDo()} </p>
             <p class='currentTasks'> Current tasks: ${countDoing()}</p>
             <p class='toDo'> Done: ${countDone()}</p>
+            <p class='prioTask'> High Priority ${priority()}</p>
             <p class='dueToday'> Due Today: ${dueDate()}</p>
             </div>
 
@@ -54,7 +55,6 @@ class WidgetSummary extends LitElement {
 let scheduled = 0;
 let current =0;
 let done = 0;
-let prio = 0;
 let due = 0;
 
 function countToDo() {
@@ -77,6 +77,38 @@ function countDone() {
     
     return done;
 }
+
+
+function priority() {
+
+    let taskList ={};
+    let taskList2 ={};
+    let prio = 0;
+
+    taskList = TaskModel.getTasks('ToDo');
+    taskList2 = TaskModel.getTasks('Doing');
+
+    for (let i =0; i<taskList.length; i++) {
+
+        if (taskList[i].priority >= 5) {
+
+            prio++;
+        }
+
+    }
+
+    for (let i =0; i<taskList2.length; i++) {
+
+        if (taskList2[i].priority >= 5) {
+
+            prio++;
+        }
+
+    }
+
+    return prio;
+}
+
 
 const date = new Date(); 
 
