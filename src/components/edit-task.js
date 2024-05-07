@@ -1,5 +1,5 @@
-import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
-import {TaskModel} from '../models.js';
+import {  LitElement, html, css } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
+import { TaskModel } from '../models.js';
 
 /** EditTask <edit-task id=N>
  * Task edit for a given task id (N).  Displays as a button which when clicked
@@ -9,22 +9,81 @@ import {TaskModel} from '../models.js';
 class EditTask extends LitElement {
   static properties = {
     id: 0,
-    _task: {state: true},
+    _task: { state: true },
   };
 
   static styles = css`
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        form div {
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-        }
-        input {
-            width: 100%;
-        }
-      `;
+    dialog {
+      width: 500px;
+      border: 1px solid;
+      border-radius: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    form div {
+      margin-bottom: 10px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input,
+    textarea {
+      width: 95%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    
+    button,
+    input[type='submit'] {
+      padding: 0.6vw 2vw;
+      border-radius: 0.4vw;
+      margin-bottom: 10px;
+      transition-duration: 0.4s;
+      background-color: #387ef5;
+      color: #faf9ff;
+      cursor: pointer;
+      display: inline-block;
+      width: auto;
+    }
+
+    .edit-button {
+      padding: 0.6vw 2vw;
+      border-radius: 0.4vw;
+      transition-duration: 0.4s;
+      background-color: #387ef5;
+      color: #faf9ff;
+      margin-bottom: 10px;
+      border: none;
+    }
+
+    .cancel-button {
+      padding: 0.6vw 2vw;
+      border-radius: 0.4vw;
+      transition-duration: 0.4s;
+      background-color: #757985;
+      margin-bottom: 10px;
+      border: none;
+    }
+    
+    button:hover,
+    input[type='submit']:hover {
+      background-color: #0063D6;
+    }
+
+    .cancel-button:hover {
+      background-color: #5B5E67;
+    }
+
+    div:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      gap: 5px;
+    }
+  `;
 
   connectedCallback() {
     super.connectedCallback();
@@ -50,7 +109,6 @@ class EditTask extends LitElement {
     this._hideModal(event);
   }
 
-
   /**
    * click handler for the button to show the editor dialog
    */
@@ -74,34 +132,31 @@ class EditTask extends LitElement {
     // suitable for the datetime-local form input
     const isoString = new Date(this._task.due).toISOString();
     const due = isoString.substring(0, isoString.indexOf('T') + 6);
-    return html`
-        <button @click=${this._showModal}>Edit</button>
-        <dialog id="edit-task-dialog">
-            <form @submit="${this._submit}">
-                <div>
-                    <label for="summary">Summary</label>
-                    <input name="summary" value=${this._task.summary}>
-                </div>
-                <div>
-                    <label for="text">Text</label>
-                    <textarea name="text">${this._task.text}</textarea> 
-                </div>
-                <div>
-                    <label for="priority">Priority</label>
-                    <input name="priority" 
-                           type="number" 
-                           value=${this._task.priority}> 
-                </div>
-                <div>
-                    <label for="due">Due</label>
-                    <input name="due" type="datetime-local" value=${due}>
-                </div>
-                <div>
-                    <button @click="${this._hideModal}">Cancel</button>
-                    <input value='Update' type=submit>
-                </div>
-            </form>
-        </dialog>`;
+    return html` <button class="edit-button" @click=${this._showModal}>Edit</button>
+      <dialog id="edit-task-dialog">
+        <form @submit="${this._submit}">
+          <div>
+            <label for="summary">Summary</label>
+            <input name="summary" value=${this._task.summary} />
+          </div>
+          <div>
+            <label for="text">Text</label>
+            <textarea name="text">${this._task.text}</textarea>
+          </div>
+          <div>
+            <label for="priority">Priority</label>
+            <input name="priority" type="number" value=${this._task.priority} />
+          </div>
+          <div>
+            <label for="due">Due</label>
+            <input name="due" type="datetime-local" value=${due} />
+          </div>
+          <div>
+            <button class="cancel-button" @click="${this._hideModal}">Cancel</button>
+            <input value="Update" type="submit" />
+          </div>
+        </form>
+      </dialog>`;
   }
 }
 
