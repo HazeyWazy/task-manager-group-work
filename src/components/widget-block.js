@@ -11,15 +11,15 @@ class WidgetBlock extends LitElement {
     header: {type: String},
   };
 
-  // static styles = css`
-  //   :host {
-  //       display: block;
-  //       width: 250px;
-  //       height: 250px;
-  //       background-color: azure;
-  //       border: 1px solid black;
-  //   }
-  // `;
+  static styles = css`
+    :host {
+        display: block;
+        width: 250px;
+        height: 250px;
+        background-color: azure;
+        border: 1px solid black;
+    }
+  `;
 
   constructor() {
     super();
