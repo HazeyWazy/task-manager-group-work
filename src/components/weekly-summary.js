@@ -1,12 +1,14 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 import {TaskModel} from '../models.js';
 import './task-board.js';
+import {widgetDesign} from './shareStyle.js';
 
 class WeeklySummary extends LitElement {
 
     static properties = {
         header: {type: String},
     };
+    static styles = [widgetDesign]
 
     constructor()   {
         super();
