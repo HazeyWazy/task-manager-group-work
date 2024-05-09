@@ -1,8 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 import { TaskModel } from '../models.js';
 import './task-board.js';
-import {widgetDesign} from './shareStyle.js';
-
 
 class WeeklySummary extends LitElement {
 
@@ -10,8 +8,6 @@ class WeeklySummary extends LitElement {
         header: { type: String },
         _tasks: { type: Array }
     };
-
-    static styles = [widgetDesign];
 
     constructor() {
         super();
@@ -48,22 +44,11 @@ class WeeklySummary extends LitElement {
             <h3>${this.header}</h3>
             <div>
                 ${this._tasks.length > 0 ? html`
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Task</th>
-                                <th>Due Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${this._tasks.map(task => html`
-                                <tr>
-                                    <td>${task.summary}</td>
-                                    <td>${new Date(task.due).toLocaleDateString()}</td>
-                                </tr>
-                            `)}
-                        </tbody>
-                    </table>
+                    <ul>
+                        ${this._tasks.map(task => html`
+                            <li>${task.summary} is due on ${new Date(task.due).toLocaleDateString()}</li>
+                        `)}
+                    </ul>
                 ` : html`
                     <p>No tasks due this week.</p>
                 `}
