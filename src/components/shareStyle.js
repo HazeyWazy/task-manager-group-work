@@ -58,15 +58,13 @@ h2 {
     border-radius: 50px 50px;
 }
 
-edit-task {
-    
-}
+
 `
 export const widgetDesign = css `
 :host {
     display: block;
     width: 250px;
-    height: 250px;
+    // height: 250px;
     background-color: #dae0ef;
     border: 1px solid #545B6D;
     font-family: monospace;
@@ -83,6 +81,15 @@ div {
     line-height: 0.8;
    
 }
+
+li{
+    line-height: 22px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    margin-left: -30px;
+}
+
+
 
 .flash-red {
     animation: blinker 1.5s 3;
