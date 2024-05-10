@@ -84,4 +84,17 @@ div {
    
 }
 
+.flash-red {
+    animation: blinker 1.5s 3;
+  }
+  
+  @keyframes blinker {
+    from {
+      background-color: inherit; /* Use the widget's original background color */
+    }
+    to {
+      background-color: red; /* Flash the background color to red */
+    }
+  }
+
 `
