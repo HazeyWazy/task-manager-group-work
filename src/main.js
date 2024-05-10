@@ -60,6 +60,10 @@ class Comp2110TaskManager extends LitElement {
       margin-right: auto;
       font-size: 1.8rem;
     }
+
+    .ad-widget {
+      margin-top: 1rem;
+    }
     
   `;
 
@@ -78,7 +82,7 @@ class Comp2110TaskManager extends LitElement {
       <main>      
         <task-manager></task-manager>     
         <widget-container header="Widgets">
-          <ad-widget></ad-widget>
+          <ad-widget class="ad-widget"></ad-widget>
           <widget-summary></widget-summary>
           <weekly-summary></weekly-summary>
           <task-timer-widget></task-timer-widget>
