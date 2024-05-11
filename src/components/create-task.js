@@ -47,14 +47,27 @@ class CreateTask extends LitElement {
             padding: 0.6vw 2vw;
             border-radius: 1.1vw;
             transition-duration: 0.4s;
-            background-color: #e1f1ff;
-            color: #2E323D;
+            background-color: #dae0ef;
+            color: #3E4351;
             margin-bottom: 10px;
             border: none;
             cursor: pointer;
             display: inline-block;
             width: auto;            
-            border: 2px solid #aab6d6;
+            border: 2px solid #D1D7E6;
+        }
+
+        .create-button {
+            padding: 0.6vw 2vw;
+            border-radius: 1.1vw;
+            transition-duration: 0.4s;
+            background-color: #dae0ef;
+            color: #3E4351;
+            margin-bottom: 10px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            width: auto;            
         }
 
         .cancel-button {
@@ -70,21 +83,18 @@ class CreateTask extends LitElement {
             width: auto;
         }
             
-        .create-task-button:hover {
-            background-color: #aab6d6;
-            color: black;
-            box-shadow: 0 0 0 0.1vw #838FAD;
+        .create-task-button:hover,
+        .create-button:hover {
+            background-color: #D1D7E6;
         }
 
         .cancel-button:hover {
             background-color: #5B5E67;
         }
 
+        .create-task-button:active,
+        .create-button:active,
         .cancel-button:active {
-            transform: translateY(2px);
-        }
-
-        .create-task-button:active {
             transform: translateY(2px);
         }
 
@@ -182,7 +192,7 @@ class CreateTask extends LitElement {
                 </div>
                 <div>
                     <button class="cancel-button" @click="${this._hideModal}">Cancel</button>
-                    <input class="" type="submit" value="Create" />
+                    <input class="create-button" type="submit" value="Create" />
                 </div>
                 </form>
             </dialog>

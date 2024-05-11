@@ -38,14 +38,11 @@ class DeleteTask extends LitElement {
             background-color: #5B5E67;
         }
 
-        .delete-button:active {
-            transform: translateY(2px);
-        }
-    
+        .delete-button:active,
         .cancel-button:active {
             transform: translateY(2px);
         }
-
+        
         /* Style for the confirmation dialog */
 
         dialog {        

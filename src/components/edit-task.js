@@ -76,10 +76,7 @@ class EditTask extends LitElement {
       background-color: #5B5E67;
     }
 
-    .edit-button:active {
-      transform: translateY(2px);
-    }
-
+    .edit-button:active,
     .cancel-button:active {
       transform: translateY(2px);
     }
