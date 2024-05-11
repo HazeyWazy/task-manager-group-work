@@ -16,9 +16,9 @@ class WeeklySummary extends LitElement {
         :host   {
             item-align: center;
             width: 800px;
+            border-radius: 10px;
+            background-color: #aab6d6;
         }
-
-        
 
         div {
             padding : 0;
@@ -34,6 +34,7 @@ class WeeklySummary extends LitElement {
 
         .one-task   {
             border-bottom: 1px solid black;
+            border-radius:10px;
         }
         
         .date {
