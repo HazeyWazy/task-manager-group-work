@@ -21,6 +21,7 @@ Members:
     - use edit-task.js for future edits
 * Implement task deletion
     - delete-task.js
+    - models.js
 * Implement a <create-task> component (based on <edit-task>)
 
 ## Widget Descriptions 
