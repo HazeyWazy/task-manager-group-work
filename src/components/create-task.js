@@ -4,7 +4,7 @@ import { TaskModel } from '../models.js';
 class CreateTask extends LitElement {
 
     static properties = {
-        id: 0,
+        id: { type: Number },
         _task: { state: true },
         category: { type: String },
         summary: { type: String },
@@ -103,12 +103,6 @@ class CreateTask extends LitElement {
             background-color: #5B5E67;
         }
 
-        .create-task-button:active,
-        .create-button:active,
-        .cancel-button:active {
-            transform: translateY(2px);
-        }
-
         div:last-child {
             display: flex;
             align-items: center;
@@ -119,11 +113,11 @@ class CreateTask extends LitElement {
 
     constructor() {
         super();
-        this.category = '';
+        this.category = null;
         this.summary = '';
         this.text = '';
-        this.priority = '';
-        this.due = '';
+        this.priority = null;
+        this.due = null;
     }
 
     /**
@@ -139,19 +133,24 @@ class CreateTask extends LitElement {
             category: this.category,
             summary: this.summary,
             text: this.text,
-            priority: this.priority,
-            due: new Date(this.due + ':00').toISOString().slice(0, 16).replace('T', ' ')
+            priority: this.priority || 1, // Set default priority to 1 if not provided
+            due: this.due 
         };
 
         // Call the createTask method from TaskModel to create the new task
         TaskModel.createTask(newTask);
 
         // Clear the form fields after submission
-        this.category = '';
+        this.category = null;
         this.summary = '';
         this.text = '';
-        this.priority = '';
-        this.due = '';
+        this.priority = null;
+        this.due = null;
+
+    }
+
+    _categoryChanged(event) {
+        this.category = event.target.value;
     }
 
     /**
@@ -170,6 +169,13 @@ class CreateTask extends LitElement {
         event.preventDefault();
         const dialog = this.renderRoot.querySelector('#create-task-dialog');
         dialog.close();
+
+        // Reset form fields
+        this.category = '';
+        this.summary = '';
+        this.text = '';
+        this.priority = '';
+        this.due = '';
     }
 
     render() {
@@ -179,7 +185,7 @@ class CreateTask extends LitElement {
                 <form @submit="${this._submit}">
                 <div>
                     <label for="category">Category</label>
-                    <select name="category" .value="${this.category}" required>
+                    <select name="category" @change="${this._categoryChanged}" .value="${this.category || ''}" required>
                         <option value="ToDo">To Do</option>
                         <option value="Doing">Doing</option>
                         <option value="Done">Done</option>

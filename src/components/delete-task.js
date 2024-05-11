@@ -3,8 +3,8 @@ import { TaskModel } from '../models.js';
 
 class DeleteTask extends LitElement {
     static properties = {
-            id: 0,
-            _task: { state: true },
+        id: 0,
+        _task: { state: true },
     };
 
     static styles = css`
@@ -48,11 +48,6 @@ class DeleteTask extends LitElement {
 
         .cancel-button:hover {
             background-color: #5B5E67;
-        }
-
-        .delete-button:active,
-        .cancel-button:active {
-            transform: translateY(2px);
         }
 
         /* Style for the confirmation dialog */
