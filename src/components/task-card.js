@@ -34,6 +34,10 @@ class TaskCard extends LitElement {
       color: #3E4351;
     }
 
+    .task-due {
+      color: #f53d3d;
+  }
+
     .task-priority {
       font-size: larger;
       height: 35px;
