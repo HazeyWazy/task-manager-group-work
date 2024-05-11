@@ -36,19 +36,6 @@ class EditTask extends LitElement {
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-    
-    button,
-    input[type='submit'] {
-      padding: 0.6vw 2vw;
-      border-radius: 0.4vw;
-      margin-bottom: 10px;
-      transition-duration: 0.4s;
-      background-color: #387ef5;
-      color: #faf9ff;
-      cursor: pointer;
-      display: inline-block;
-      width: auto;
-    }
 
     .edit-button {
       padding: 0.6vw 2vw;
@@ -58,6 +45,9 @@ class EditTask extends LitElement {
       color: #faf9ff;
       margin-bottom: 10px;
       border: none;
+      cursor: pointer;
+      display: inline-block;
+      width: auto;
     }
 
     .cancel-button {
@@ -69,8 +59,7 @@ class EditTask extends LitElement {
       border: none;
     }
     
-    button:hover,
-    input[type='submit']:hover {
+    .edit-button:hover {
       background-color: #0063D6;
     }
 
@@ -133,7 +122,8 @@ class EditTask extends LitElement {
     // suitable for the datetime-local form input
     const isoString = new Date(this._task.due).toISOString();
     const due = isoString.substring(0, isoString.indexOf('T') + 6);
-    return html` <button class="edit-button" @click=${this._showModal}>Edit</button>
+    return html` 
+      <button class="edit-button" @click=${this._showModal}>Edit</button>
       <dialog id="edit-task-dialog">
         <form @submit="${this._submit}">
           <div>
@@ -154,10 +144,11 @@ class EditTask extends LitElement {
           </div>
           <div>
             <button class="cancel-button" @click="${this._hideModal}">Cancel</button>
-            <input value="Update" type="submit" />
+            <input class="edit-button" value="Update" type="submit" />
           </div>
         </form>
-      </dialog>`;
+      </dialog>
+    `;
   }
 }
 
