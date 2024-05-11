@@ -42,7 +42,7 @@ class TaskBoard extends LitElement {
     font-size: 1.5rem;
     color: #2E323D;
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
   `;
 

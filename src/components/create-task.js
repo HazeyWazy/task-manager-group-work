@@ -42,34 +42,50 @@ class CreateTask extends LitElement {
             border: 1px solid #ccc;
         }
 
-        .edit-button {
+        .create-task-button {
+            font-size: 1rem;
             padding: 0.6vw 2vw;
-            border-radius: 0.4vw;
+            border-radius: 1.1vw;
             transition-duration: 0.4s;
-            background-color: #387ef5;
-            color: #faf9ff;
+            background-color: #e1f1ff;
+            color: #2E323D;
             margin-bottom: 10px;
             border: none;
             cursor: pointer;
             display: inline-block;
-            width: auto;
+            width: auto;            
+            border: 2px solid #aab6d6;
         }
 
         .cancel-button {
             padding: 0.6vw 2vw;
-            border-radius: 0.4vw;
+            border-radius: 1.1vw;
             transition-duration: 0.4s;
             background-color: #757985;
             margin-bottom: 10px;
             border: none;
+            color: #faf9ff;
+            cursor: pointer;
+            display: inline-block;
+            width: auto;
         }
             
-        .edit-button:hover {
-            background-color: #0063D6;
+        .create-task-button:hover {
+            background-color: #aab6d6;
+            color: black;
+            box-shadow: 0 0 0 0.1vw #838FAD;
         }
 
         .cancel-button:hover {
             background-color: #5B5E67;
+        }
+
+        .cancel-button:active {
+            transform: translateY(2px);
+        }
+
+        .create-task-button:active {
+            transform: translateY(2px);
         }
 
         div:last-child {
@@ -137,7 +153,7 @@ class CreateTask extends LitElement {
 
     render() {
         return html`
-            <button class="create-button" @click=${this._showModal}>Create</button>
+            <button class="create-task-button" @click=${this._showModal}>Create New Task</button>
             <dialog id="create-task-dialog">
                 <form @submit="${this._submit}">
                 <div>
@@ -153,20 +169,20 @@ class CreateTask extends LitElement {
                     <input type="text" name="summary" .value="${this.summary}" required>
                 </div>
                 <div>
-                    <label for="text">Text:</label>
+                    <label for="text">Text</label>
                     <textarea name="text" .value="${this.text}" required></textarea>
                 </div>
                 <div>
-                    <label for="priority">Priority:</label>
+                    <label for="priority">Priority</label>
                     <input type="number" name="priority" .value="${this.priority}" required>
                 </div>
                 <div>
-                    <label for="due">Due:</label>
+                    <label for="due">Due</label>
                     <input type="datetime-local" id="due" name="due" .value="${this.due}" required>
                 </div>
                 <div>
                     <button class="cancel-button" @click="${this._hideModal}">Cancel</button>
-                    <input type="submit" value="Create" />
+                    <input class="" type="submit" value="Create" />
                 </div>
                 </form>
             </dialog>

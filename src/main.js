@@ -39,7 +39,6 @@ class Comp2110TaskManager extends LitElement {
     .my-tasks {
       margin: 10px;
       margin-bottom: 0;
-      background-color: #aab6d6;
       border-radius: 20px;
       width: 73vw;
       display: flex;
@@ -53,6 +52,9 @@ class Comp2110TaskManager extends LitElement {
     }
 
     create-task {
+      align-content: center;
+      padding-right: 8px;
+      margin-bottom: -10px;
     }
 
     task-manager {
