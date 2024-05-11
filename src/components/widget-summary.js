@@ -21,7 +21,11 @@ class WidgetSummary extends LitElement {
         margin-left: 75px;
         width: 100px;
         height: 100px;
-        background-image: conic-gradient(#545B6D, #AAB6D6, #A1989F);
+        background-image: conic-gradient(
+            #545B6D 0 30%, 
+            #AAB6D6 30% 60%, 
+            #A1989F 60% 100%);
+            border-radius: 50%;
     }
 
     ul {
