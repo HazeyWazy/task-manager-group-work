@@ -18,8 +18,8 @@ class WidgetSummary extends LitElement {
     static styles = [widgetDesign, css`
 
     :host {
-        --slice1: 20%;
-        --slice2: 50%;
+        --slice1: 30%;
+        --slice2: 60%;
     }
 
     section {
@@ -73,6 +73,7 @@ class WidgetSummary extends LitElement {
         height: 15px;
         border-radius: 50%;
         background-color: #545B6D;
+        vertical-align: -5%;
     }
 
     .currentTasks::before {
@@ -82,6 +83,7 @@ class WidgetSummary extends LitElement {
         height: 15px;
         border-radius: 50%;
         background-color: #AAB6D6;
+        vertical-align: -5%;
     }
 
     .doneTasks::before {
@@ -91,6 +93,7 @@ class WidgetSummary extends LitElement {
         height: 15px;
         border-radius: 50%;
         background-color: #A1989F;
+        vertical-align: -5%;
     }
 
     
