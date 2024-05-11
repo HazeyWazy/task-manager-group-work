@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: #e1f1ff;
+}
 
 h3 {
   color: #A1989F;
@@ -10,6 +11,4 @@ h3 {
 
 .task-board{
   padding-left: 20px;
-}
-
 }
