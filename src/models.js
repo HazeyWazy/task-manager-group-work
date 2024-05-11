@@ -154,6 +154,35 @@ class Task {
           this.loadData();
         });
   }
+
+  /**
+   * Delete a task with the specified ID. Sends a delete request to the server
+   * and then refreshes the local task store (async).
+   * A 'task' event will be dispatched when the new data is loaded.
+   * @param {number} id - The ID of the task to delete
+   */
+  deleteTask(id) {
+    const URL = `${BASE_URL}tasks/${id}`;
+    const user = getUser();
+    fetch(URL, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'basic ' + user.token,
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        // If deletion is successful, reload the task data
+        this.loadData();
+      } else {
+        // If deletion fails, handle the error
+        console.error('Failed to delete task:', response.statusText);
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting task:', error);
+    });
+  }
 }
 
 // Export an instance of the task object (singleton) where other modules can
