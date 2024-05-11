@@ -21,8 +21,12 @@ Members:
     - use edit-task.js for future edits
 * Implemented task deletion
     - delete-task.js
-    - models.js
+    - models.js (added deleteTask method)
+    - may need manual refresh to see complete deletion as it sometimes shows loading...
 * Implement a <create-task> component (based on <edit-task>)
+    - create-task.js
+    - models.js (added createTask method & edited loadData)
+    - Still require manual refresh to see newly made task cards
 
 ## Widget Descriptions 
 ----
