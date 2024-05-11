@@ -15,7 +15,39 @@ class WidgetSummary extends LitElement {
         _due: {state: true},
     }
     
-    static styles = [widgetDesign]
+    static styles = [widgetDesign, css`
+    
+
+    // div {
+    //     padding-top: 50px;
+    // }
+
+    .doneTasks{
+        background-color: #e1f1ff;
+        border-radius: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left:20px;
+        margin-right: 15px;
+        
+    }
+
+    .currentTasks{
+        background-color: #e1f1ff;
+        border-radius: 20px;
+        padding: 10px 15px;
+        margin-right: 15px;
+    }
+
+    .toDo{
+        background-color: #e1f1ff;
+        border-radius: 20px;
+        padding: 10px 15px;
+        margin-right: 15px;
+    }
+    
+    ` ]
+    
 
     constructor() {
         super();

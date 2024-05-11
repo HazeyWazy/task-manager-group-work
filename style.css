@@ -13,23 +13,5 @@ body {
     font-family: sans-serif;
     background-color: #e1f1ff;
 
-h3 {
- color: #A1989F;
-}
-
-.task-board{
-    padding-left: 20px;
-}
-
-/* 
-:host input {
-    width: 5em;
-}
-.task-actions {
-  display: block;
-}
-.task-actions li {
-  display: inline-block;
-} */
-
+  
 }
