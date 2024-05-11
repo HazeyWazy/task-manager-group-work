@@ -1,4 +1,4 @@
-import { LitElement, html } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
+import { LitElement, html, css } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 import { TaskModel } from '../models.js';
 import './task-board.js';
 import {widgetDesign} from './shareStyle.js';
@@ -11,7 +11,14 @@ class WeeklySummary extends LitElement {
     };
 
 
-    static styles = [widgetDesign]
+    static styles = [widgetDesign, css`
+    li {
+        line-height: 22px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        margin-left: -30px;
+        
+    }`]
 
     constructor() {
         super();

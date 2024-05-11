@@ -1,12 +1,14 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 
 export const widgetDesign = css `
+
 :host {
     display: block;
     width: 250px;
     background-color: #dae0ef;
     border: 1px solid #3E4351;
     font-family: monospace;
+    
 }
 
 h3 {
@@ -20,14 +22,6 @@ div {
     line-height: 0.8;
    
 }
-
-li{
-    line-height: 22px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    margin-left: -30px;
-}
-
 
 
 .flash-red {
