@@ -17,13 +17,15 @@ class WidgetSummary extends LitElement {
     
     static styles = [widgetDesign, css`
     
-    .pie {
-        width: 50px;
-        height 50px;
+    #pie {
+        margin-left: 75px;
+        width: 100px;
+        height: 100px;
+        background-image: conic-gradient(#545B6D, #AAB6D6, #A1989F);
     }
 
     ul {
-        padding-top: 100px;
+        // padding-top: 100px;
         padding-left:20px; 
     }
     
@@ -88,7 +90,7 @@ class WidgetSummary extends LitElement {
         return html`
             <h3>${this.header}</h3>
 
-            <div class='pie'> </div>
+            <section id="pie"> </section>
 
             <ul>
                <li> <p class='toDo'> To Do: ${countToDo()} </p> </li>
