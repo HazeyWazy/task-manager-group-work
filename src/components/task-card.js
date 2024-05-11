@@ -42,8 +42,9 @@ class TaskCard extends LitElement {
     .task-priority {
       font-size: larger;
       height: 35px;
-      width: 35px;
+      width: 40px;
       text-align: center;
+      padding-top: 5px;
       margin-top: 15px;
       margin-left: auto;
       margin-right: auto;
