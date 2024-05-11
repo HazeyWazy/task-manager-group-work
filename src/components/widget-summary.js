@@ -33,8 +33,27 @@ class WidgetSummary extends LitElement {
             border-radius: 50%;
     }
 
+    button {
+        padding: 0.3vw 0.8vw;
+        border-radius: 0.5vw;
+        background-color: #387ef5;
+        color: #faf9ff;
+        border: none;
+        font-size: 9px;
+        float: right;
+        margin-right: 10px;
+    }
+
+    button:hover {
+        background-color: #0063D6;
+      }
+
+    .total {
+        line-height: 1;
+        font-size: 18px;
+    }
+
     ul {
-        // padding-top: 100px;
         padding-left:20px; 
     }
     
@@ -112,7 +131,7 @@ class WidgetSummary extends LitElement {
                 <button @click="${() => this.sliceColor(sliceVal1, sliceVal1+sliceVal2)}"> 
                 Refresh Chart
                 </button>
-                <p>Task Total: ${pieValues()}</p>
+                <p class="total">Task Total: ${pieValues()}</p>
             </div>
 
             <ul>
