@@ -76,6 +76,14 @@ class EditTask extends LitElement {
       background-color: #5B5E67;
     }
 
+    .edit-button:active {
+      transform: translateY(2px);
+    }
+
+    .cancel-button:active {
+      transform: translateY(2px);
+    }
+
     div:last-child {
       display: flex;
       align-items: center;
