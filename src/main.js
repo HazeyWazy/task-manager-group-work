@@ -8,6 +8,7 @@ import './components/task-manager.js';
 import './components/widget-summary.js';
 import './components/weekly-summary.js';
 import './components/task-timer-widget.js';
+import './components/create-task.js';
 
 /**
  * Comp2110TaskManager component constructs the main UI of the application
@@ -49,6 +50,9 @@ class Comp2110TaskManager extends LitElement {
       display: inline-block;
       margin-right: auto;
       padding-left: 5px;
+    }
+
+    create-task {
     }
 
     task-manager {
@@ -111,6 +115,7 @@ class Comp2110TaskManager extends LitElement {
       <main>
         <div class="my-tasks">
           <h2>My Tasks</h2>
+          <create-task></create-task>
         </div>
         <task-manager></task-manager>     
         <widget-container header="Widgets">

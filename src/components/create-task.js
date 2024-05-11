@@ -6,6 +6,11 @@ class CreateTask extends LitElement {
     static properties = {
         id: 0,
         _task: { state: true },
+        category: { type: String },
+        summary: { type: String },
+        text: { type: String },
+        priority: { type: Number },
+        due: { type: String }
     };
 
     static styles = css`
@@ -75,8 +80,9 @@ class CreateTask extends LitElement {
         }
     `;
 
-    connectedCallback() {
-        super.connectedCallback();
+    constructor() {
+        super();
+        this.category = 'ToDo';
         this.summary = '';
         this.text = '';
         this.priority = '';
@@ -104,6 +110,7 @@ class CreateTask extends LitElement {
         TaskModel.createTask(newTask);
 
         // Clear the form fields after submission
+        this.category = 'ToDo';
         this.summary = '';
         this.text = '';
         this.priority = '';
@@ -129,10 +136,6 @@ class CreateTask extends LitElement {
     }
 
     render() {
-        // convert due date from milliseconds time to an ISO string
-        // suitable for the datetime-local form input
-        const isoString = new Date(this._task.due).toISOString();
-        const due = isoString.substring(0, isoString.indexOf('T') + 6);
         return html`
             <button class="create-button" @click=${this._showModal}>Create</button>
             <dialog id="create-task-dialog">

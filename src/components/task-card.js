@@ -6,7 +6,6 @@ import {
 import { TaskModel } from '../models.js';
 import './edit-task.js';  // Import the EditTask component
 import './delete-task.js'; // Import the DeleteTask component
-import './create-task.js'; // Import the CreateTask component
 
 class TaskCard extends LitElement {
   static properties = {
