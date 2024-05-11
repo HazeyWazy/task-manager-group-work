@@ -21,15 +21,44 @@ class Comp2110TaskManager extends LitElement {
     :host {
       min-height: 100vh;   
       font-size: 14pt;
-      max-width: 960px;
       margin: 0 auto;
       text-align: center;
       background-color: var(--comp2110-portal-background-color);
+      display: flex;
+      flex-direction: column;
     }
 
     main {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 1fr 300px;
+      justify-items: center;
+    }
+
+    .my-tasks {
+      margin: 10px;
+      margin-bottom: 0;
+      background-color: #aab6d6;
+      border-radius: 20px;
+      width: 73vw;
       display: flex;
-      justify-content: space-evenly;
+    }
+
+    .my-tasks h2 {
+      color: #2E323D;
+      display: inline-block;
+      margin-right: auto;
+      padding-left: 5px;
+    }
+
+    task-manager {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    widget-container {
+      grid-row: span 2;
+      grid-column: 2;
     }
 
     .app-footer {
@@ -53,6 +82,7 @@ class Comp2110TaskManager extends LitElement {
       justify-content: flex-end;
       align-items: center;
       position: sticky;
+      grid-column: span 2;
     }
 
     header h1 {
@@ -78,7 +108,10 @@ class Comp2110TaskManager extends LitElement {
         <login-widget></login-widget>
       </header>
 
-      <main>      
+      <main>
+        <div class="my-tasks">
+          <h2>My Tasks</h2>
+        </div>
         <task-manager></task-manager>     
         <widget-container header="Widgets">
           <ad-widget class="ad-widget"></ad-widget>
