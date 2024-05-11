@@ -99,6 +99,7 @@ class WidgetSummary extends LitElement {
     sliceColor(firstSlice, secondSlice) {
         this.style.setProperty('--slice1',firstSlice + '%');
         this.style.setProperty('--slice2',secondSlice + '%');
+
     } 
 
     render() {
@@ -108,14 +109,15 @@ class WidgetSummary extends LitElement {
             <section id="pie"> </section>
 
             <div> 
-                <button @click="${() => this.sliceColor('10', '40')}">
+                <button @click="${() => this.sliceColor(sliceVal1, sliceVal1+sliceVal2)}"> 
                 Refresh Chart
                 </button>
+                <p>Task Total: ${pieValues()}</p>
             </div>
 
             <ul>
                <li> <p class='toDo'> To Do: ${countToDo()} </p> </li>
-               <li> <p class='currentTasks'> Doing: ${pieValues()}</p> </li>
+               <li> <p class='currentTasks'> Doing: ${countDoing()}</p> </li>
                <li> <p class='doneTasks'> Done: ${countDone()}</p> </li>
             </ul>
 
@@ -128,9 +130,26 @@ class WidgetSummary extends LitElement {
     }
 }
 
+
+
 let scheduled = 0;
 let current =0;
 let done = 0;
+let sliceVal1 =0;
+let sliceVal2 = 0;
+let pieVal = 0;
+
+//function to update the pie values
+function pieValues() {
+
+    pieVal = scheduled +current +done;
+
+    sliceVal1 = (scheduled/pieVal)*100;
+    sliceVal2 = (current/pieVal)*100;
+
+    // sliceColor(sliceVal1, sliceVal2);
+    return pieVal;
+}
 
 
 //return toDo task board count
@@ -218,18 +237,6 @@ function dueDate() {
 
     return due;
 }
-    let sliceVal1 =0;
-    let sliceVal2 = 0;
-
-
-function pieValues() {
-
-    let pieVal = scheduled +current +done;
-
-    sliceVal1 = (scheduled/pieVal)*100;
-    sliceVal2 = (current/pieVal)*100;
-}
-
 
 
 customElements.define('widget-summary', WidgetSummary);
