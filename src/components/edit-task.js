@@ -44,7 +44,7 @@ class EditTask extends LitElement {
 
     .edit-button {
       padding: 0.6vw 2vw;
-      border-radius: 0.4vw;
+      border-radius: 1.1vw;
       transition-duration: 0.4s;
       background-color: #387ef5;
       color: #faf9ff;
@@ -57,7 +57,7 @@ class EditTask extends LitElement {
 
     .cancel-button {
       padding: 0.6vw 2vw;
-      border-radius: 0.4vw;
+      border-radius: 1.1vw;
       transition-duration: 0.4s;
       background-color: #757985;
       margin-bottom: 10px;
