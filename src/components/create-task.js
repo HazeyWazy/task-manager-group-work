@@ -127,6 +127,7 @@ class CreateTask extends LitElement {
      */
     _submit(event) {
         event.preventDefault();
+        console.log("Before Submission - Category:", this.category, "Summary:", this.summary, "Text:", this.text, "Priority:", this.priority, "Due:", this.due);
 
         // Create a new task object with the form data
         const newTask = {
@@ -140,17 +141,35 @@ class CreateTask extends LitElement {
         // Call the createTask method from TaskModel to create the new task
         TaskModel.createTask(newTask);
 
+        // Close the dialog
+        this._hideModal();
+
         // Clear the form fields after submission
         this.category = null;
         this.summary = '';
         this.text = '';
         this.priority = null;
         this.due = null;
-
     }
 
     _categoryChanged(event) {
         this.category = event.target.value;
+    }
+
+    _summaryChanged(event) {
+        this.summary = event.target.value;
+    }
+
+    _textChanged(event) {
+        this.text = event.target.value;
+    }
+
+    _dueChanged(event) {
+        this.due = event.target.value;
+    }
+
+    _priorityChanged(event) {
+        this.priority = parseInt(event.target.value);
     }
 
     /**
@@ -166,7 +185,6 @@ class CreateTask extends LitElement {
      * @param {Object} event - the click event
      */
     _hideModal(event) {
-        event.preventDefault();
         const dialog = this.renderRoot.querySelector('#create-task-dialog');
         dialog.close();
 
@@ -193,19 +211,19 @@ class CreateTask extends LitElement {
                 </div>
                 <div>
                     <label for="summary">Summary</label>
-                    <input type="text" name="summary" .value="${this.summary}" required>
+                    <input type="text" name="summary" @change="${this._summaryChanged}" .value="${this.summary}" required>
                 </div>
                 <div>
                     <label for="text">Text</label>
-                    <textarea name="text" .value="${this.text}" required></textarea>
+                    <textarea name="text" @change="${this._textChanged}" .value="${this.text}" required></textarea>
                 </div>
                 <div>
                     <label for="priority">Priority</label>
-                    <input type="number" name="priority" .value="${this.priority}" required>
+                    <input type="number" name="priority" @change="${this._priorityChanged}" .value="${this.priority}" required>
                 </div>
                 <div>
                     <label for="due">Due</label>
-                    <input type="datetime-local" id="due" name="due" .value="${this.due}" required>
+                    <input type="datetime-local" name="due" @change="${this._dueChanged}" .value="${this.due}" required>
                 </div>
                 <div>
                     <button class="cancel-button" @click="${this._hideModal}">Cancel</button>
