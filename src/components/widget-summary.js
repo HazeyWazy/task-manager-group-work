@@ -16,15 +16,20 @@ class WidgetSummary extends LitElement {
     }
     
     static styles = [widgetDesign, css`
-    
-    #pie {
+
+    :host {
+        --slice1: 20%;
+        --slice2: 50%;
+    }
+
+    section {
         margin-left: 75px;
         width: 100px;
         height: 100px;
         background-image: conic-gradient(
-            #545B6D 0 30%, 
-            #AAB6D6 30% 60%, 
-            #A1989F 60% 100%);
+            #545B6D 0 var(--slice1), 
+            #AAB6D6 var(--slice1) var(--slice2), 
+            #A1989F var(--slice2) 100%);
             border-radius: 50%;
     }
 
@@ -79,16 +84,22 @@ class WidgetSummary extends LitElement {
         // set an event listener to refresh the display when the data is ready
         window.addEventListener('tasks', () => {
         this._loadData();
-      });
+        });
 
-      }
+    }
 
-      _loadData() {
+    _loadData() {
         // get the up to date summary
         this._tasks = TaskModel.getTasks(this.category);
         this._due = TaskModel.getTasksForDay(date);
         this.render();
-      }
+       
+    }
+
+    sliceColor(firstSlice, secondSlice) {
+        this.style.setProperty('--slice1',firstSlice + '%');
+        this.style.setProperty('--slice2',secondSlice + '%');
+    } 
 
     render() {
         return html`
@@ -96,9 +107,15 @@ class WidgetSummary extends LitElement {
 
             <section id="pie"> </section>
 
+            <div> 
+                <button @click="${() => this.sliceColor('10', '40')}">
+                Refresh Chart
+                </button>
+            </div>
+
             <ul>
                <li> <p class='toDo'> To Do: ${countToDo()} </p> </li>
-               <li> <p class='currentTasks'> Doing: ${countDoing()}</p> </li>
+               <li> <p class='currentTasks'> Doing: ${pieValues()}</p> </li>
                <li> <p class='doneTasks'> Done: ${countDone()}</p> </li>
             </ul>
 
@@ -106,8 +123,6 @@ class WidgetSummary extends LitElement {
             <p class='prioTask'> High Priority: ${priority()}</p>
             <p class='dueToday'> Due Today: ${dueDate()}</p>
             </div>
-
-
 
         `;
     }
@@ -203,6 +218,18 @@ function dueDate() {
 
     return due;
 }
+    let sliceVal1 =0;
+    let sliceVal2 = 0;
+
+
+function pieValues() {
+
+    let pieVal = scheduled +current +done;
+
+    sliceVal1 = (scheduled/pieVal)*100;
+    sliceVal2 = (current/pieVal)*100;
+}
+
 
 
 customElements.define('widget-summary', WidgetSummary);
