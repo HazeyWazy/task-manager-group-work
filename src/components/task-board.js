@@ -1,7 +1,7 @@
 import {LitElement, html, css} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import {TaskModel} from '../models.js';
 import './task-card.js';
-import {taskPanels} from './shareStyle.js';
+
 
 /**
  * TaskBoard <task-board category="XXX">
@@ -39,6 +39,8 @@ class TaskBoard extends LitElement {
   h3 {
     font-size: 1.5rem;
     color: #2E323D;
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
   `;
 

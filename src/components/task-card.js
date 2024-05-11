@@ -28,7 +28,29 @@ class TaskCard extends LitElement {
       padding-top:10px;
       font-size: large;
       border-radius: 50px 50px;
-    } 
+    }
+
+    div p {
+      color: #3E4351;
+    }
+
+    .task-due {
+      color: #f53d3d;
+    }
+
+    .task-priority {
+      font-size: larger;
+      height: 35px;
+      width: 35px;
+      text-align: center;
+      margin-top: 15px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
+    }
 
     .collapsed {
       white-space: nowrap;

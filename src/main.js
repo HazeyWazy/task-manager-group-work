@@ -7,6 +7,7 @@ import './components/login-widget.js';
 import './components/task-manager.js';
 import './components/widget-summary.js';
 import './components/weekly-summary.js';
+import './components/task-timer-widget.js';
 
 /**
  * Comp2110TaskManager component constructs the main UI of the application
@@ -20,7 +21,6 @@ class Comp2110TaskManager extends LitElement {
     :host {
       min-height: 100vh;   
       font-size: 14pt;
-      color: #1a2b42;
       max-width: 960px;
       margin: 0 auto;
       text-align: center;
@@ -59,6 +59,10 @@ class Comp2110TaskManager extends LitElement {
       margin-right: auto;
       font-size: 1.8rem;
     }
+
+    .ad-widget {
+      margin-top: 1rem;
+    }
     
   `;
 
@@ -77,10 +81,10 @@ class Comp2110TaskManager extends LitElement {
       <main>      
         <task-manager></task-manager>     
         <widget-container header="Widgets">
-          <ad-widget></ad-widget>
+          <ad-widget class="ad-widget"></ad-widget>
           <widget-summary></widget-summary>
-          <widget-block header="Widget 2"></widget-block>
           <weekly-summary></weekly-summary>
+          <task-timer-widget></task-timer-widget>
         </widget-container>
       </main>
 

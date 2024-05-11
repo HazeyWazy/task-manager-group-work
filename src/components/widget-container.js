@@ -28,7 +28,6 @@ class WidgetContainer extends LitElement {
   render() {
     return html`
       <div>
-        <h2>${this.header}</h2>
         <slot></slot>
       </div>
     `;

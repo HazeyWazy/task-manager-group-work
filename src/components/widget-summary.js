@@ -42,7 +42,7 @@ class WidgetSummary extends LitElement {
             <p class='doneTasks'> Scheduled Tasks: ${countToDo()} </p>
             <p class='currentTasks'> Current tasks: ${countDoing()}</p>
             <p class='toDo'> Done: ${countDone()}</p>
-            <p class='prioTask'> High Priority ${priority()}</p>
+            <p class='prioTask'> High Priority: ${priority()}</p>
             <p class='dueToday'> Due Today: ${dueDate()}</p>
             </div>
 

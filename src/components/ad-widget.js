@@ -11,14 +11,14 @@ class AdWidget extends LitElement {
 
   static styles = css`
     :host {
-        display: block;
-        width: 250px;
-        height: 250px;
-        background-color: azure;
+      display: block;
+      width: 250px;
+      height: 250px;
+      background-color: azure;
     }
     :host p {
       position: relative;
-      top: -50px;
+      top: -55px;
       text-align: right;
       padding-right: 10px;
       z-index: 0;

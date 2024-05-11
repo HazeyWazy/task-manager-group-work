@@ -5,32 +5,22 @@ in this file.
 
 Group 92
 Members:
-Danica Ching,
-Htet Yamin Ei,
-Lawrence Nelson,
-Wai Lin Oo
+* Danica Ching - Task Summary Widget
+* Htet Yamin Ei - Extending Task Card
+* Lawrence Nelson - Task Timer Widget
+* Wai Lin Oo - Weekly Summary Widget
 
 
-# Extending task card
+# Extending Task Card
 ---
-improve the layout and display of the task card
-implement a pop-up task detail view that shows the full task detail (e.g. if the task has a very long description)
-improve the task edit form dialog (<edit-task>) layout
-Implement task deletion
-Implement a <create-task> component (based on <edit-task>)
-
-Extending task card - Htet Yamin
-improve the layout and display of the task card -danica
-
-# Widget Delegation 
-------
-
-Task Summary Widget - Danica 
-
-Task Timer Widget - Lawrence 
-
-Weekly Summary Widget -  Wai Lin
-
+* improved the layout and display of the task card
+    - use main.js, task-board.js, task-card.js to edit the css style
+* implement a pop-up task detail view that shows the full task detail (e.g. if the task has a very long description)
+    - use task-card.js for design edit
+* improved the task edit form dialog (<edit-task>) layout
+    - use edit-task.js for future edits
+* Implement task deletion
+* Implement a <create-task> component (based on <edit-task>)
 
 ## Widget Descriptions 
 ----
