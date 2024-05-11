@@ -12,7 +12,7 @@ class DeleteTask extends LitElement {
             padding: 0.6vw 1.5vw;
             border-radius: 1.1vw;
             transition-duration: 0.4s;
-            background-color: #f53d3d;
+            background-color: #d0312d;
             color: #faf9ff;
             cursor: pointer;
             display: inline-block;
@@ -42,7 +42,7 @@ class DeleteTask extends LitElement {
         .cancel-button:active {
             transform: translateY(2px);
         }
-        
+
         /* Style for the confirmation dialog */
 
         dialog {        
