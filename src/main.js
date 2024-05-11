@@ -21,7 +21,6 @@ class Comp2110TaskManager extends LitElement {
     :host {
       min-height: 100vh;   
       font-size: 14pt;
-      color: #1a2b42;
       max-width: 960px;
       margin: 0 auto;
       text-align: center;
