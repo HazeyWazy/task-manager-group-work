@@ -28,9 +28,8 @@ class Comp2110TaskManager extends LitElement {
     }
 
     main {
-      display: inline-block;
+      display: flex;
       justify-content: space-evenly;
-      
     }
 
     .app-footer {
@@ -60,7 +59,6 @@ class Comp2110TaskManager extends LitElement {
       margin-right: auto;
       font-size: 1.8rem;
     }
-
     
   `;
 
@@ -76,15 +74,14 @@ class Comp2110TaskManager extends LitElement {
         <login-widget></login-widget>
       </header>
 
-      <main>         
+      <main>      
+        <task-manager></task-manager>     
         <widget-container header="Widgets">
           <ad-widget></ad-widget>
           <widget-summary></widget-summary>
           <widget-block header="Widget 2"></widget-block>
           <weekly-summary></weekly-summary>
         </widget-container>
-
-        <task-manager></task-manager>  
       </main>
 
       <p class="app-footer">

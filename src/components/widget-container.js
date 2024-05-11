@@ -16,7 +16,7 @@ class WidgetContainer extends LitElement {
   static styles = css`
     div {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
     }
   `;
 
@@ -28,7 +28,7 @@ class WidgetContainer extends LitElement {
   render() {
     return html`
       <div>
-        <h2></h2>
+        <h2>${this.header}</h2>
         <slot></slot>
       </div>
     `;
