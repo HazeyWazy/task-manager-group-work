@@ -18,11 +18,11 @@ class WidgetSummary extends LitElement {
     static styles = [widgetDesign, css`
     
 
-    // div {
-    //     padding-top: 50px;
-    // }
+    div {
+    }
 
     ul {
+        padding-top: 100px;
         padding-left: 20px;
     }
     li{
@@ -78,8 +78,9 @@ class WidgetSummary extends LitElement {
 let scheduled = 0;
 let current =0;
 let done = 0;
-let due = 0;
 
+
+//return toDo task board count
 function countToDo() {
 
     scheduled= TaskModel.getTasks('ToDo').length;
@@ -87,6 +88,7 @@ function countToDo() {
     return scheduled;
 }
 
+//return Doing task board count
 function countDoing() {
 
     current= TaskModel.getTasks('Doing').length;
@@ -94,6 +96,7 @@ function countDoing() {
     return current;
 }
 
+//return Done task board count
 function countDone() {
 
     done= TaskModel.getTasks('Done').length;
@@ -102,6 +105,7 @@ function countDone() {
 }
 
 
+//return count of tasks in todo/doing with priority >=5
 function priority() {
 
     let taskList ={};
@@ -114,31 +118,32 @@ function priority() {
     for (let i =0; i<taskList.length; i++) {
 
         if (taskList[i].priority >= 5) {
-
             prio++;
         }
-
     }
 
     for (let i =0; i<taskList2.length; i++) {
 
         if (taskList2[i].priority >= 5) {
-
             prio++;
         }
-
     }
 
     return prio;
 }
 
-
+//get today's date
 const date = new Date(); 
 
+
+//count tasks due today
 function dueDate() {
 
+    //get count of tasks due that are already done
     let doneDue ={};
+    let due = 0;
     let doneDueCount = 0;
+    //gets all tasks due today
     due = TaskModel.getTasksForDay(date).length
     doneDue = TaskModel.getTasks('Done')
 
@@ -146,23 +151,20 @@ function dueDate() {
         let dueDate = new Date(parseInt(doneDue[i].due));
 
         if (date.toDateString() === dueDate.toDateString()) {
-        
             doneDueCount++;
-
         }
-
     }
+
+    //subtracts the count of due items with the dues in "done"
     due = due-doneDueCount;
     
+    //return 0 if it is negative
     if (due<0){
          due = 0;
      }
 
     return due;
 }
-
-
-
 
 
 customElements.define('widget-summary', WidgetSummary);
