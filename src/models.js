@@ -183,6 +183,37 @@ class Task {
       console.error('Error deleting task:', error);
     });
   }
+
+  /**
+   * Create a new task with the provided details. Sends a POST request to the server
+   * to create the task and then refreshes the local task store (async).
+   * A 'task' event will be dispatched when the new data is loaded.
+   * @param {Object} taskData - The details of the new task to create
+   */
+  createTask(taskData) {
+    const URL = `${BASE_URL}tasks`;
+    const user = getUser();
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'basic ' + user.token,
+      },
+      body: JSON.stringify(taskData),
+    })
+    .then(response => {
+      if (response.ok) {
+        // If creation is successful, reload the task data
+        this.loadData();
+      } else {
+        // If creation fails, handle the error
+        console.error('Failed to create task:', response.statusText);
+      }
+    })
+    .catch(error => {
+      console.error('Error creating task:', error);
+    });
+  }
 }
 
 // Export an instance of the task object (singleton) where other modules can
