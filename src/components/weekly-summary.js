@@ -12,12 +12,76 @@ class WeeklySummary extends LitElement {
 
 
     static styles = [widgetDesign, css`
-        li {
-            line-height: 22px;
-            padding-bottom: 10px;
-            padding-right: 10px;
-            margin-left: -30px;
+
+        :host   {
+            item-align: center;
+            width: 800px;
         }
+
+        
+
+        div {
+            padding : 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5px;
+            border-top: 1px solid black;
+            background-color: #ffffed;
+        }
+
+        .one-task   {
+            border-bottom: 1px solid black;
+        }
+        
+        .date {
+            font-weight: bold;  
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #e1e1e1;
+            height:40px;
+        }
+        
+        .nDate {
+            
+            margin-right:auto;
+            padding-left:15px;
+        }
+
+        .fDate  {
+            margin-left:auto;
+            padding-right: 15px;
+        }
+        
+        .task-section {
+            display: flex;
+            margin-bottom: 15px;
+            padding-right: 15px;
+            
+        }
+        
+        .due-time {
+            padding-left:15px;
+            width: 30%;
+            font-style: italic;
+        }
+        
+        .tasks {
+            text-align: left;
+            width : 60%;
+            font-weight: bold;
+
+            /*To prevent overflow for long text*/
+            hyphens: auto;
+            overflow-wrap: break-word; /* For newer browsers */
+            word-wrap: break-word; /* For older browsers */
+            
+        }
+        
+
     `]
 
     constructor() {
@@ -54,17 +118,19 @@ class WeeklySummary extends LitElement {
         
         return html`
             <h3>${this.header}</h3>
-            <div>
+            <div class="Wsummary">
                 ${this._tasks.length > 0 ? html`
                     <div class="container">
                         ${this._tasks.map(task => html`
-                            <div class="date">
-                                <div class="nDate">${this.getDayName(task.due)}</div>
-                                <div class="date">${new Date(task.due).toLocaleDateString()}</div>
-                            </div>
-                            <div class="task-section">
-                                <div class="due-time">${new Date(task.due).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>    
-                                <div class="tasks">${task.summary}</div>
+                            <div class="one-task">
+                                <div class="date">
+                                    <div class="nDate">${this.getDayName(task.due)}</div>
+                                    <div class="fDate">${new Date(task.due).toLocaleDateString()}</div>
+                                </div>
+                                <div class="task-section">
+                                    <div class="due-time">${new Date(task.due).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>    
+                                    <div class="tasks">${task.summary}</div>
+                                </div>
                             </div>
                         `)}
                     </div>
