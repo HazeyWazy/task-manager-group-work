@@ -16,7 +16,8 @@ class EditTask extends LitElement {
     dialog {
       width: 500px;
       border: 1px solid;
-      border-radius: 10px;
+      border-radius: 10px;      
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
     }
     form {
       display: flex;

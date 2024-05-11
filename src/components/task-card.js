@@ -4,7 +4,8 @@ import {
   css,
 } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 import { TaskModel } from '../models.js';
-import './edit-task.js';
+import './edit-task.js';  // Import the EditTask component
+import './delete-task.js'; // Import the DeleteTask component
 
 class TaskCard extends LitElement {
   static properties = {
@@ -136,6 +137,20 @@ class TaskCard extends LitElement {
     this.showPopup = !this.showPopup;
   }
 
+  /**
+   * Handle task deletion
+   * @param {CustomEvent} event - The task-deleted event
+   */
+  _handleTaskDeleted(event) {
+    const { taskId } = event.detail;
+    if (taskId === this.id) {
+      // Task with this ID was deleted, update UI accordingly
+      // For example, you can reset the task data or remove the task card from the UI
+      // Here, we'll just reload the data
+      this._loadData();
+    }
+  }
+
   render() {
     // Check if _task is available
     if (this._task) {
@@ -145,18 +160,22 @@ class TaskCard extends LitElement {
 
       // Return HTML template
       return html`
-        <div>
+        <div>        
           <!-- Display task summary -->
           <h2>${this._task.summary}</h2>
+
           <!-- Display task timestamp -->
           <p class="task-timestamp">${ts.toDateString()}</p>
+
           <!-- Display task due date -->
           <p class="task-due">${due.toDateString()}</p>
+
           <!-- Check if task text length is greater than contentThreshold -->
           ${this._task.text.length > this.contentThreshold
             ? html`
                 <!-- Display task text with option to expand/collapse -->
                 <p class=${this.expanded ? 'expanded' : 'collapsed'}>
+
                   <!-- Show full text if expanded, otherwise show truncated text -->
                   ${this.expanded
                     ? this._task.text
@@ -165,6 +184,7 @@ class TaskCard extends LitElement {
                         this.contentThreshold
                       )}...`}
                 </p>
+
                 <!-- Button to expand/collapse task text -->
                 <span class="expand-button" @click=${this.togglePopup}>
                   ${this.expanded ? 'Collapse' : 'Expand'}
@@ -174,22 +194,32 @@ class TaskCard extends LitElement {
                 <!-- Display full task text if it's shorter than contentThreshold -->
                 <p>${this._task.text}</p>
               `}
+
           <!-- Display task priority -->
           <p class="task-priority">${this._task.priority}</p>
+
           <!-- Display edit-task component -->
           <edit-task id=${this.id}></edit-task>
+
+          <!-- Display DeleteTask component -->
+          <delete-task id=${this.id} @task-deleted="${this._handleTaskDeleted}"></delete-task>
+
           <!-- Display popup overlay if showPopup is true -->
           <div
             class="popup-overlay ${this.showPopup ? 'visible' : ''}"
             @click=${this.togglePopup}
           ></div>
+
           <!-- Display popup container if showPopup is true -->
           <div class="popup-container ${this.showPopup ? 'visible' : ''}">
+
             <!-- Display full task text in popup -->
             <p>${this._task.text}</p>
+
             <!-- Button to close popup -->
             <button @click=${this.togglePopup}>Close</button>
-          </div>
+
+          </div>          
         </div>
       `;
     } else {

@@ -29,9 +29,11 @@ class TaskBoard extends LitElement {
   :host input {
     width: 5em;
   }
+
   .task-actions {
     display: block;
   }
+
   .task-actions li {
     display: inline-block;
   }
@@ -43,7 +45,6 @@ class TaskBoard extends LitElement {
     margin-bottom: 12px;
   }
   `;
-
 
   constructor() {
     super();
