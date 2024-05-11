@@ -67,7 +67,7 @@ class TaskBoard extends LitElement {
       return html`
           <div>
             <h3>${this.category}</h3>
-
+            
             <div class="card-list">
               ${this._tasks.map((task) => {
                   return html`<task-card id=${task.id}></task-card>`;
