@@ -52,21 +52,30 @@ class WidgetSummary extends LitElement {
     }
 }
 
-// let scheduled = 0;
-// let current =0;
-// let done = 0;
-// let due = 0;
+let scheduled = 0;
+let current =0;
+let done = 0;
+let due = 0;
 
 function countToDo() {
-    return TaskModel.getTasks('ToDo').length;
+
+    scheduled= TaskModel.getTasks('ToDo').length;
+
+    return scheduled;
 }
 
 function countDoing() {
-    return TaskModel.getTasks('Doing').length;
+
+    current= TaskModel.getTasks('Doing').length;
+
+    return current;
 }
 
 function countDone() {
-    return TaskModel.getTasks('Done').length;;
+
+    done= TaskModel.getTasks('Done').length;
+    
+    return done;
 }
 
 
@@ -82,15 +91,19 @@ function priority() {
     for (let i =0; i<taskList.length; i++) {
 
         if (taskList[i].priority >= 5) {
+
             prio++;
         }
+
     }
 
     for (let i =0; i<taskList2.length; i++) {
 
         if (taskList2[i].priority >= 5) {
+
             prio++;
         }
+
     }
 
     return prio;
@@ -101,8 +114,6 @@ const date = new Date();
 
 function dueDate() {
 
-    
-    let due = 0;
     let doneDue ={};
     let doneDueCount = 0;
     due = TaskModel.getTasksForDay(date).length
@@ -112,12 +123,14 @@ function dueDate() {
         let dueDate = new Date(parseInt(doneDue[i].due));
 
         if (date.toDateString() === dueDate.toDateString()) {
+        
             doneDueCount++;
+
         }
+
     }
-
     due = due-doneDueCount;
-
+    
     if (due<0){
          due = 0;
      }
