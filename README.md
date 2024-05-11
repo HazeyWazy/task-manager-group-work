@@ -15,11 +15,11 @@ Members:
 ---
 * improved the layout and display of the task card
     - use main.js, task-board.js, task-card.js to edit the css style
-* implement a pop-up task detail view that shows the full task detail (e.g. if the task has a very long description)
+* implemented a pop-up task detail view that shows the full task detail (e.g. if the task has a very long description)
     - use task-card.js for design edit
 * improved the task edit form dialog (<edit-task>) layout
     - use edit-task.js for future edits
-* Implement task deletion
+* Implemented task deletion
     - delete-task.js
     - models.js
 * Implement a <create-task> component (based on <edit-task>)
