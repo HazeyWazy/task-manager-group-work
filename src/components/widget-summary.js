@@ -17,20 +17,52 @@ class WidgetSummary extends LitElement {
     
     static styles = [widgetDesign, css`
     
-
-    div {
+    .pie {
+        width: 50px;
+        height 50px;
     }
 
     ul {
         padding-top: 100px;
-        padding-left: 20px;
+        padding-left:20px; 
     }
+    
     li{
         background-color: #e1f1ff;
         border-radius: 20px;
         margin-right: 20px;
-        list-style-type: none
+        text-align: left;
+        padding-left: 20px;
+        list-style-type: none;
     }
+
+    .toDo::before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #545B6D;
+    }
+
+    .currentTasks::before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #AAB6D6;
+    }
+
+    .doneTasks::before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #A1989F;
+    }
+
     
     ` ]
     

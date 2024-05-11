@@ -7,6 +7,7 @@ export const widgetDesign = css `
     background-color: #dae0ef;
     border: 1px solid #3E4351;
     font-family: monospace;
+    
 }
 
 h3 {
