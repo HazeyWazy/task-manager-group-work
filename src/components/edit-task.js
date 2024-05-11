@@ -62,7 +62,11 @@ class EditTask extends LitElement {
       background-color: #757985;
       margin-bottom: 10px;
       border: none;
-    }
+      color: #faf9ff;
+      cursor: pointer;
+      display: inline-block;
+      width: auto;
+  }
     
     .edit-button:hover {
       background-color: #0063D6;
