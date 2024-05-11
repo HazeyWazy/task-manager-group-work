@@ -42,6 +42,12 @@ class EditTask extends LitElement {
       border: 1px solid #ccc;
     }
 
+    input:hover,
+    textarea:hover,
+    select:hover {
+      box-shadow: 0 0 0 0.1vw #717788;
+    }
+
     .edit-button {
       padding: 0.6vw 2vw;
       border-radius: 1.1vw;

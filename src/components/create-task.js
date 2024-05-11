@@ -35,11 +35,22 @@ class CreateTask extends LitElement {
         }
 
         input,
-        textarea {
+        textarea,
+        select {
             width: 95%;
             padding: 5px;
             border-radius: 5px;
             border: 1px solid #ccc;
+        }
+
+        select {
+            width: 98%;
+        }
+
+        input:hover,
+        textarea:hover,
+        select:hover {
+            box-shadow: 0 0 0 0.1vw #717788;
         }
 
         .create-task-button {

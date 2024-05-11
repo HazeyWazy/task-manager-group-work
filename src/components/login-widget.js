@@ -99,7 +99,7 @@ class LoginWidget extends LitElement {
       background-color: #faf9ff;
       color: #2e323d;
       border: solid 1px #2e323d;
-      transform: translateY(3px);
+      transform: translateY(2px);
       box-shadow: none;
     }
     
