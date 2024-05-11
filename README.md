@@ -20,6 +20,7 @@ Members:
 * improved the task edit form dialog (<edit-task>) layout
     - use edit-task.js for future edits
 * Implement task deletion
+    - delete-task.js
 * Implement a <create-task> component (based on <edit-task>)
 
 ## Widget Descriptions 
