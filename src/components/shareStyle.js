@@ -21,14 +21,6 @@ div {
    
 }
 
-li{
-    line-height: 22px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    margin-left: -30px;
-}
-
-
 
 .flash-red {
     animation: blinker 1.5s 3;

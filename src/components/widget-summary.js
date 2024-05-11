@@ -22,28 +22,14 @@ class WidgetSummary extends LitElement {
     //     padding-top: 50px;
     // }
 
-    .doneTasks{
-        background-color: #e1f1ff;
-        border-radius: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left:20px;
-        margin-right: 15px;
-        
+    ul {
+        padding-left: 20px;
     }
-
-    .currentTasks{
+    li{
         background-color: #e1f1ff;
         border-radius: 20px;
-        padding: 10px 15px;
-        margin-right: 15px;
-    }
-
-    .toDo{
-        background-color: #e1f1ff;
-        border-radius: 20px;
-        padding: 10px 15px;
-        margin-right: 15px;
+        margin-right: 20px;
+        list-style-type: none
     }
     
     ` ]
@@ -70,10 +56,15 @@ class WidgetSummary extends LitElement {
         return html`
             <h3>${this.header}</h3>
 
+            <div class='pie'> </div>
+
+            <ul>
+               <li> <p class='toDo'> To Do: ${countToDo()} </p> </li>
+               <li> <p class='currentTasks'> Doing: ${countDoing()}</p> </li>
+               <li> <p class='doneTasks'> Done: ${countDone()}</p> </li>
+            </ul>
+
             <div>
-            <p class='doneTasks'> Scheduled Tasks: ${countToDo()} </p>
-            <p class='currentTasks'> Current tasks: ${countDoing()}</p>
-            <p class='toDo'> Done: ${countDone()}</p>
             <p class='prioTask'> High Priority: ${priority()}</p>
             <p class='dueToday'> Due Today: ${dueDate()}</p>
             </div>
