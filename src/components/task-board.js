@@ -54,10 +54,19 @@ class TaskBoard extends LitElement {
     });
   }
 
-  _loadData() {
+  connectedCallback() {
+    super.connectedCallback();
+    this._loadData();
+    // Listen for task-created event to update task list
+    this.addEventListener('task-created', () => {
+      this._loadData();
+    });
+}
+
+  async _loadData() {
     // get the up to date task list
-    this._tasks = TaskModel.getTasks(this.category);
-    this.render();
+    this._tasks = await TaskModel.getTasks(this.category);
+    this.update();
   }
 
   render() {

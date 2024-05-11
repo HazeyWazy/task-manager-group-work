@@ -150,6 +150,8 @@ class CreateTask extends LitElement {
         this.text = '';
         this.priority = null;
         this.due = null;
+
+        console.log("After Submission - Category:", this.category, "Summary:", this.summary, "Text:", this.text, "Priority:", this.priority, "Due:", this.due);
     }
 
     _categoryChanged(event) {

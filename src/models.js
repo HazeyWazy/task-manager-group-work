@@ -203,16 +203,36 @@ class Task {
     })
     .then(response => {
       if (response.ok) {
-        // If creation is successful, reload the task data
-        this.loadData();
+        // If creation is successful, add the new task to the local task store
+        return response.json(); // Extract the newly created task data
       } else {
         // If creation fails, handle the error
         console.error('Failed to create task:', response.statusText);
+        throw new Error('Failed to create task');
       }
+    })
+    .then(newTask => {
+      // Add the newly created task to the local task store
+      this._addTaskToLocalStore(newTask);
     })
     .catch(error => {
       console.error('Error creating task:', error);
     });
+  }
+
+  _addTaskToLocalStore(newTask) {
+    // Determine the category of the new task
+    const category = newTask.category;
+    
+    // Add the new task to the local task store
+    if (category in this._tasks) {
+      this._tasks[category].push(newTask);
+    } else {
+      this._tasks[category] = [newTask];
+    }
+    
+    // Trigger a task event to notify components of the updated task data
+    this._updateEvent();
   }
 }
 
