@@ -12,6 +12,17 @@ class DeleteTask extends LitElement {
             padding: 0.6vw 1.5vw;
             border-radius: 1.1vw;
             transition-duration: 0.4s;
+            background-color: #545B6D;
+            color: #faf9ff;
+            cursor: pointer;
+            display: inline-block;
+            border: none;
+        }
+
+        .delete-dialog-button {
+            padding: 0.6vw 1.5vw;
+            border-radius: 1.1vw;
+            transition-duration: 0.4s;
             background-color: #f53d3d;
             color: #faf9ff;
             cursor: pointer;
@@ -30,8 +41,9 @@ class DeleteTask extends LitElement {
             border: none;
         }
 
-        .delete-button:hover {
-            background-color: #d50000;
+        .delete-button:hover,
+        .delete-dialog-button:hover {
+            background-color: #e2342b;
         }
 
         .cancel-button:hover {
@@ -42,7 +54,7 @@ class DeleteTask extends LitElement {
         .cancel-button:active {
             transform: translateY(2px);
         }
-        
+
         /* Style for the confirmation dialog */
 
         dialog {        
@@ -111,7 +123,7 @@ class DeleteTask extends LitElement {
             </div>          
             <div>
                 <button class="cancel-button" @click="${this._hideModal}">Cancel</button>
-                <input class="delete-button" value="Delete" type="submit" />
+                <input class="delete-dialog-button" value="Delete" type="submit" />
             </div>
             </form>
         </dialog>`;

@@ -119,7 +119,7 @@ class CreateTask extends LitElement {
 
     constructor() {
         super();
-        this.category = 'ToDo';
+        this.category = '';
         this.summary = '';
         this.text = '';
         this.priority = '';
@@ -140,14 +140,14 @@ class CreateTask extends LitElement {
             summary: this.summary,
             text: this.text,
             priority: this.priority,
-            due: new Date(this.due).valueOf() // Convert due date to milliseconds
+            due: new Date(this.due + ':00').toISOString().slice(0, 16).replace('T', ' ')
         };
 
         // Call the createTask method from TaskModel to create the new task
         TaskModel.createTask(newTask);
 
         // Clear the form fields after submission
-        this.category = 'ToDo';
+        this.category = '';
         this.summary = '';
         this.text = '';
         this.priority = '';
