@@ -13,22 +13,27 @@ class EditTask extends LitElement {
   };
 
   static styles = css`
+
     dialog {
       width: 500px;
       border: 1px solid;
       border-radius: 10px;      
       box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
     }
+
     form {
       display: flex;
       flex-direction: column;
     }
+
     form div {
       margin-bottom: 10px;
     }
+
     label {
       font-weight: bold;
     }
+
     input,
     textarea {
       width: 95%;
