@@ -12,7 +12,7 @@ class DeleteTask extends LitElement {
             padding: 0.6vw 1.5vw;
             border-radius: 1.1vw;
             transition-duration: 0.4s;
-            background-color: #d0312d;
+            background-color: #545B6D;
             color: #faf9ff;
             cursor: pointer;
             display: inline-block;
@@ -31,7 +31,7 @@ class DeleteTask extends LitElement {
         }
 
         .delete-button:hover {
-            background-color: #d50000;
+            background-color: #e2342b;
         }
 
         .cancel-button:hover {
