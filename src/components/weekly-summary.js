@@ -12,13 +12,13 @@ class WeeklySummary extends LitElement {
 
 
     static styles = [widgetDesign, css`
-    li {
-        line-height: 22px;
-        padding-bottom: 10px;
-        padding-right: 10px;
-        margin-left: -30px;
-        
-    }`]
+        li {
+            line-height: 22px;
+            padding-bottom: 10px;
+            padding-right: 10px;
+            margin-left: -30px;
+        }
+    `]
 
     constructor() {
         super();
@@ -46,26 +46,39 @@ class WeeklySummary extends LitElement {
 
         // Sort tasks by due date in ascending order
         this._tasks.sort((a, b) => new Date(a.due) - new Date(b.due));
-
+        console.log(this._tasks)
         this.render();
     }
 
     render() {
+        
         return html`
             <h3>${this.header}</h3>
             <div>
                 ${this._tasks.length > 0 ? html`
-                    <ul>
+                    <div class="container">
                         ${this._tasks.map(task => html`
-                            <li>${task.summary} is due on ${new Date(task.due).toLocaleDateString()}</li>
+                            <div class="date">
+                                <div class="nDate">${this.getDayName(task.due)}</div>
+                                <div class="date">${new Date(task.due).toLocaleDateString()}</div>
+                            </div>
+                            <div class="task-section">
+                                <div class="due-time">${new Date(task.due).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>    
+                                <div class="tasks">${task.summary}</div>
+                            </div>
                         `)}
-                    </ul>
+                    </div>
                 ` : html`
                     <p>No tasks due this week.</p>
                 `}
             </div>
         `;
     }
+    getDayName(dateString) {
+        const date = new Date(dateString);
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        return dayNames[date.getDay()];
+    }
 }
-
+    
 customElements.define('weekly-summary', WeeklySummary);
