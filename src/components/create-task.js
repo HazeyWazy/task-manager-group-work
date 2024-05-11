@@ -120,6 +120,17 @@ class CreateTask extends LitElement {
         this.due = null;
     }
 
+    _createTask(newTask) {
+        TaskModel.createTask(newTask)
+            .then(() => {
+                // Fetch updated task data after creating a new task
+                TaskModel.loadData();
+            })
+            .catch((error) => {
+                console.error('Error creating task:', error);
+            });
+    }
+
     /**
      * _submit - private method to handle form submission. Constructs
      * a new task from the form values and then creates the task via TaskModel
@@ -127,7 +138,6 @@ class CreateTask extends LitElement {
      */
     _submit(event) {
         event.preventDefault();
-        console.log("Before Submission - Category:", this.category, "Summary:", this.summary, "Text:", this.text, "Priority:", this.priority, "Due:", this.due);
 
         // Create a new task object with the form data
         const newTask = {
@@ -150,8 +160,6 @@ class CreateTask extends LitElement {
         this.text = '';
         this.priority = null;
         this.due = null;
-
-        console.log("After Submission - Category:", this.category, "Summary:", this.summary, "Text:", this.text, "Priority:", this.priority, "Due:", this.due);
     }
 
     _categoryChanged(event) {

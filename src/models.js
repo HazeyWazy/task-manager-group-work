@@ -37,7 +37,8 @@ class Task {
             return response.json();
           })
           .then((data) => {
-            this._storeData(data.tasks);
+            this._storeData(data.tasks);            
+            this._updateEvent();  // Dispatch the tasks event after the data is loaded
           })
           .catch((error) => {
             console.log(error);
@@ -45,7 +46,7 @@ class Task {
     } else {
       // no user so forget whatever we knew
       this._tasks = {};
-      this._updateEvent();
+      this._updateEvent();  // Ensure event is dispatched even if no data is loaded
     }
   }
 
@@ -219,7 +220,7 @@ class Task {
       console.error('Error creating task:', error);
     });
   }
-
+  
   _addTaskToLocalStore(newTask) {
     // Determine the category of the new task
     const category = newTask.category;
