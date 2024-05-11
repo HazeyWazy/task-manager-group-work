@@ -5,10 +5,10 @@ in this file.
 
 Group 92
 Members:
-Danica Ching - Task Summary Widget
-Htet Yamin Ei - Extending Task Card
-Lawrence Nelson - Task Timer Widget
-Wai Lin Oo - Weekly Summary Widget
+* Danica Ching - Task Summary Widget
+* Htet Yamin Ei - Extending Task Card
+* Lawrence Nelson - Task Timer Widget
+* Wai Lin Oo - Weekly Summary Widget
 
 
 # Extending Task Card
