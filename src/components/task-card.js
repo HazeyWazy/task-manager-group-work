@@ -27,16 +27,19 @@ class TaskCard extends LitElement {
 
     h2 {
       padding-top:10px;
+      padding-left: 5px;
+      padding-right: 5px;
       font-size: large;
       border-radius: 50px 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
 
     div p {
       color: #3E4351;
-    }
-
-    // to prevent overflow for long text
-    .task-card {
+      padding-left: 5px;
+      padding-right: 5px;
       hyphens: auto;
       overflow-wrap: break-word;
       word-wrap: break-word;
@@ -168,7 +171,7 @@ class TaskCard extends LitElement {
 
       // Return HTML template
       return html`
-        <div class="task-card">        
+        <div>        
           <!-- Display task summary -->
           <h2>${this._task.summary}</h2>
 
