@@ -13,10 +13,6 @@ class WeeklySummary extends LitElement {
 
     static styles = [widgetDesign, css`
 
-        :host   {
-            item-align: center;
-        }
-
         div {
             padding : 0;
         }
@@ -82,7 +78,6 @@ class WeeklySummary extends LitElement {
             hyphens: auto;
             overflow-wrap: break-word; /* For newer browsers */
             word-wrap: break-word; /* For older browsers */
-            
         }
         
 
