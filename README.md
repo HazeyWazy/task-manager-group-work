@@ -5,8 +5,8 @@ in this file.
 
 Group 92
 Members:
-* Danica Ching - Task Summary Widget
 * Htet Yamin Ei - Extending Task Card
+* Danica Ching - Task Summary Widget
 * Lawrence Nelson - Task Timer Widget
 * Wai Lin Oo - Weekly Summary Widget
 
@@ -33,6 +33,12 @@ Members:
 
 ##  Task Summary Widget : 
 shows statistics from the currently displayed tasks, how many  tasks in each category, how many high priority tasks, how many due today.  Updates when tasks are added, removed or changed.
+
+Added a pie chart to represent the tasks. There is a button called "Refresh Chart" that must be clicked to display the correct current values of the task manager. 
+
+Each task board on the pie chart is represented by the colour indicated by the circle on the left.
+
+High priority count shows the values of the tasks with a priority level greater or equal to 5.
 
 ##  Task Timer Widget : 
 implements a count down timer that you can set to a given time, e.g. 15 minutes, counts down and sounds an alarm/flashes the screen when the time  is up.
