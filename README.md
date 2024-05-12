@@ -32,13 +32,13 @@ Members:
 ----
 
 ##  Task Summary Widget : 
-shows statistics from the currently displayed tasks, how many  tasks in each category, how many high priority tasks, how many due today.  Updates when tasks are added, removed or changed.
+The task summary widget shows the count of items displayed on the task boards. There is a count for the total amount of tasks, the tasks in each category, the tasks with priority greater or equal to 5, and the amount of tasks due today. 
 
-Added a pie chart to represent the tasks. There is a button called "Refresh Chart" that must be clicked to display the correct current values of the task manager. 
+Added a pie chart to represent the tasks. On load the piechart is blank. There is a button called "Refresh" that must be clicked to display the current values of the task manager on the pie chart
 
-Each task board on the pie chart is represented by the colour indicated by the circle on the left.
+Each task board on the pie chart is represented by the colour indicated by the circle on the left of the count.
 
-High priority count shows the values of the tasks with a priority level greater or equal to 5.
+The number values update automatically when the tasks are added, removed, or changed. The pie chart must but updated manually with the refresh button.
 
 ##  Task Timer Widget : 
 implements a count down timer that you can set to a given time, e.g. 15 minutes, counts down and sounds an alarm/flashes the screen when the time  is up.
