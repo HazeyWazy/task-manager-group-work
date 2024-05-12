@@ -14,8 +14,8 @@ class WidgetSummary extends LitElement {
     static styles = [widgetDesign, css`
 
     :host {
-        --slice1: 30%;
-        --slice2: 60%;
+        --slice1: 0%;
+        --slice2: 0%;
     }
 
     section {
@@ -29,25 +29,6 @@ class WidgetSummary extends LitElement {
             border-radius: 50%;
     }
 
-    button {
-        padding: 0.3vw 0.8vw;
-        border-radius: 0.5vw;
-        background-color: #387ef5;
-        color: #faf9ff;
-        border: none;
-        font-size: 15px;
-        float: right;
-        margin-right: 10px;
-    }
-
-    button:hover {
-        background-color: #0063D6;
-      }
-
-    .total {
-        line-height: 1;
-        font-size: 18px;
-    }
 
     ul {
         padding-left:20px; 
@@ -111,7 +92,8 @@ class WidgetSummary extends LitElement {
         this._tasks = TaskModel.getTasks(this.category);
         this._due = TaskModel.getTasksForDay(date);
         this.render();
-       
+        this.sliceColor(sliceVal1, sliceVal1+sliceVal2);
+        
     }
 
     //method to change the piechart values
@@ -128,9 +110,6 @@ class WidgetSummary extends LitElement {
             <section id="pie"> </section>
 
             <div> 
-                <button @click="${() => this.sliceColor(sliceVal1, sliceVal1+sliceVal2)}"> 
-                Refresh
-                </button>
                 <p class="total">Task Total: ${pieValues()}</p>
             </div>
 
