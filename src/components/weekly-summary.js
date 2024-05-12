@@ -33,6 +33,12 @@ class WeeklySummary extends LitElement {
             border-bottom: 1px solid black;
             border-radius:10px;
         }
+
+        .one-task:hover {
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);; 
+            transform: translateY(-5px); /* Lift the one-task */
+            transition: all 0.3s ease; /*smooth animation */
+        }
         
         .date {
             font-weight: bold;  
