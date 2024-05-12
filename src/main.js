@@ -124,8 +124,8 @@ class Comp2110TaskManager extends LitElement {
           <ad-widget class="ad-widget"></ad-widget>
           <widget-summary></widget-summary>
           <task-timer-widget></task-timer-widget>
+          <weekly-summary></weekly-summary>
         </widget-container>
-        <weekly-summary></weekly-summary>
       </main>
 
       <p class="app-footer">

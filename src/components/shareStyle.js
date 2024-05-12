@@ -4,11 +4,11 @@ export const widgetDesign = css `
 
 :host {
     display: block;
-    width: 250px;
+    width: 280px;
     background-color: #dae0ef;
     border: 1px solid #3E4351;
     font-family: monospace;
-    
+    border-radius: 10px;
 }
 
 h3 {

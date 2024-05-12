@@ -15,9 +15,6 @@ class WeeklySummary extends LitElement {
 
         :host   {
             item-align: center;
-            width: 800px;
-            border-radius: 10px;
-            background-color: #aab6d6;
         }
 
         div {
