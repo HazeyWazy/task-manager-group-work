@@ -12,7 +12,9 @@ export const widgetDesign = css `
 }
 
 h3 {
-    color: #181B29
+    color: #181B29;
+    font-size: larger;
+
 }
 
 div {

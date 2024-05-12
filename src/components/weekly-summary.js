@@ -7,15 +7,12 @@ class WeeklySummary extends LitElement {
 
     static properties = {
         header: { type: String },
-        _tasks: { type: Array }
+        _tasks: { type: Array },
     };
 
 
     static styles = [widgetDesign, css`
-
-        :host   {
-            item-align: center;
-        }
+    
 
         div {
             padding : 0;
@@ -32,6 +29,12 @@ class WeeklySummary extends LitElement {
         .one-task   {
             border-bottom: 1px solid black;
             border-radius:10px;
+        }
+
+        .one-task:hover {
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);; 
+            transform: translateY(-5px); /* Lift the one-task */
+            transition: all 0.3s ease; /*smooth animation */
         }
         
         .date {
@@ -76,10 +79,24 @@ class WeeklySummary extends LitElement {
             hyphens: auto;
             overflow-wrap: break-word; /* For newer browsers */
             word-wrap: break-word; /* For older browsers */
-            
         }
-        
 
+        p   {
+            text-align: center;
+            font-style: italic;
+            color: green;
+            animation: sparkleAnimation 1s infinite alternate;
+        }
+
+        @keyframes sparkleAnimation {
+            0% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1.1);
+            }
+          }
     `]
 
     constructor() {
@@ -94,21 +111,20 @@ class WeeklySummary extends LitElement {
 
     _loadData() {
         const today = new Date(); 
-
         const endOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (7 - today.getDay()));
         endOfThisWeek.setHours(23, 59, 59);
-        console.log(endOfThisWeek);
 
         // Get all tasks due within the current week that are not on the Done board
         const allTasks = TaskModel.getTasks();
+
+        //Filtering tasks that are due this week and Not Done yet. Including tasks from prev weeks
         this._tasks = allTasks.filter(task => {
             const dueDate = new Date(task.due);
-            return (dueDate <= endOfThisWeek) && task.category !== 'Done';
+            return (dueDate <= endOfThisWeek) && (task.category !== 'Done');
         });
 
         // Sort tasks by due date in ascending order
         this._tasks.sort((a, b) => new Date(a.due) - new Date(b.due));
-        console.log(this._tasks)
         this.render();
     }
 
@@ -116,9 +132,12 @@ class WeeklySummary extends LitElement {
         
         return html`
             <h3>${this.header}</h3>
+
             <div class="Wsummary">
+                <!-- Check if there are tasks to display -->
                 ${this._tasks.length > 0 ? html`
                     <div class="container">
+                        <!-- loop each task and display -->
                         ${this._tasks.map(task => html`
                             <div class="one-task">
                                 <div class="date">
@@ -126,18 +145,19 @@ class WeeklySummary extends LitElement {
                                     <div class="fDate">${new Date(task.due).toLocaleDateString()}</div>
                                 </div>
                                 <div class="task-section">
-                                    <div class="due-time">${new Date(task.due).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>    
+                                    <div class="due-time">${new Date(task.due).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>   
                                     <div class="tasks">${task.summary}</div>
                                 </div>
                             </div>
                         `)}
                     </div>
-                ` : html`
+                ` : html` <!-- if there is no task to display -->
                     <p>No tasks due this week.</p>
                 `}
             </div>
         `;
     }
+
     getDayName(dateString) {
         const date = new Date(dateString);
         const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

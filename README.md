@@ -27,6 +27,7 @@ Members:
     - create-task.js
     - models.js (added createTask method & edited loadData)
     - Still require manual refresh to see newly made task cards
+    - Task cards are capped at 10 so if there are already 10 task cards, creating new task cards will not work properly.
 
 ## Widget Descriptions 
 ----
