@@ -143,19 +143,19 @@ class EditTask extends LitElement {
         <form @submit="${this._submit}">
           <div>
             <label for="summary">Summary</label>
-            <input name="summary" value=${this._task.summary} />
+            <input name="summary" value=${this._task.summary} required />
           </div>
           <div>
             <label for="text">Text</label>
-            <textarea name="text">${this._task.text}</textarea>
+            <textarea name="text" required>${this._task.text}</textarea>
           </div>
           <div>
             <label for="priority">Priority</label>
-            <input name="priority" type="number" value=${this._task.priority} />
+            <input name="priority" type="number" value=${this._task.priority} required />
           </div>
           <div>
             <label for="due">Due</label>
-            <input name="due" type="datetime-local" value=${due} />
+            <input name="due" type="datetime-local" value=${due} required />
           </div>
           <div>
             <button class="cancel-button" @click="${this._hideModal}">Cancel</button>
