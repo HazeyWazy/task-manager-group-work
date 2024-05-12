@@ -26,7 +26,7 @@ class WidgetSummary extends LitElement {
         background-image: conic-gradient(
             #545B6D 0 var(--slice1), 
             #AAB6D6 var(--slice1) var(--slice2), 
-            #A1989F var(--slice2) 100%);
+            #E1F1FF  var(--slice2) 100%);
             border-radius: 50%;
     }
 
@@ -36,7 +36,7 @@ class WidgetSummary extends LitElement {
     }
     
     li{
-        background-color: #e1f1ff;
+        background-color: #FFFFFF;
         border-radius: 20px;
         margin-right: 20px;
         text-align: left;
@@ -70,7 +70,8 @@ class WidgetSummary extends LitElement {
         width: 15px;
         height: 15px;
         border-radius: 50%;
-        background-color: #A1989F;
+        background-color: #E1F1FF ;
+        //#A1989F;
         vertical-align: -5%;
     }
 
