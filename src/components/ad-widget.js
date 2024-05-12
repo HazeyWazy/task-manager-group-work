@@ -12,9 +12,8 @@ class AdWidget extends LitElement {
   static styles = css`
     :host {
       display: block;
-      width: 250px;
-      height: 250px;
-      background-color: azure;
+      width: 280px;
+      height: 280px;
     }
     :host p {
       position: relative;
@@ -23,6 +22,12 @@ class AdWidget extends LitElement {
       padding-right: 10px;
       z-index: 0;
       color: white;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+      border: #3E4351;
     }
   `;
 
