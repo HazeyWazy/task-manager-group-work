@@ -12,6 +12,7 @@ class WeeklySummary extends LitElement {
 
 
     static styles = [widgetDesign, css`
+    
 
         div {
             padding : 0;
@@ -115,9 +116,11 @@ class WeeklySummary extends LitElement {
 
         // Get all tasks due within the current week that are not on the Done board
         const allTasks = TaskModel.getTasks();
+
+        //Filtering tasks that are due this week and Not Done yet. Including tasks from prev weeks
         this._tasks = allTasks.filter(task => {
             const dueDate = new Date(task.due);
-            return (dueDate <= endOfThisWeek) && task.category !== 'Done';
+            return (dueDate <= endOfThisWeek) && (task.category !== 'Done');
         });
 
         // Sort tasks by due date in ascending order
@@ -129,9 +132,12 @@ class WeeklySummary extends LitElement {
         
         return html`
             <h3>${this.header}</h3>
+
             <div class="Wsummary">
+                <!-- Check if there are tasks to display -->
                 ${this._tasks.length > 0 ? html`
                     <div class="container">
+                        <!-- loop each task and display -->
                         ${this._tasks.map(task => html`
                             <div class="one-task">
                                 <div class="date">
@@ -145,7 +151,7 @@ class WeeklySummary extends LitElement {
                             </div>
                         `)}
                     </div>
-                ` : html`
+                ` : html` <!-- if there is no task to display -->
                     <p>No tasks due this week.</p>
                 `}
             </div>
