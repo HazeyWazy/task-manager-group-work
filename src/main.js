@@ -32,7 +32,7 @@ class Comp2110TaskManager extends LitElement {
     main {
       display: grid;
       grid-template-rows: auto 1fr;
-      grid-template-columns: 1fr 20%;
+      grid-template-columns: 1fr 22%;
       justify-items: center;
     }
 
