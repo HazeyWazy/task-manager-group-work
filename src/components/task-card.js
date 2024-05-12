@@ -35,6 +35,13 @@ class TaskCard extends LitElement {
       color: #3E4351;
     }
 
+    // to prevent overflow for long text
+    .task-card {
+      hyphens: auto;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
     .task-due {
       color: #f53d3d;
     }
@@ -161,7 +168,7 @@ class TaskCard extends LitElement {
 
       // Return HTML template
       return html`
-        <div>        
+        <div class="task-card">        
           <!-- Display task summary -->
           <h2>${this._task.summary}</h2>
 
