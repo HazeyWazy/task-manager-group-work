@@ -25,7 +25,7 @@ div {
 
 
 .flash-red {
-    animation: blinker 1.5s 3;
+    animation: blinker 1.5s 5;
   }
   
   @keyframes blinker {
@@ -37,4 +37,11 @@ div {
     }
   }
 
+.show-bell {
+  display: inline;
+}
+
+.hide-bell {
+  display: none;
+}
 `

@@ -4,22 +4,36 @@ import {widgetDesign} from './shareStyle.js';
 import './task-board.js';
 
 class TaskTimer extends LitElement {
-    static styles = [widgetDesign];
+    static styles = [widgetDesign, css`
+    input {
+        width: 40px; /* text box width */
+        height: 15px; /* text box height */
+        
+      }
+
+    `]
+    
     
 
     static properties = {
+        minutes: {type: Number},
+        seconds: {type: Number},
         count: {type: Number},
         countingDown: {type: Boolean},
         enableButton: {type: Boolean},
         headingStyle: {type: String},
+        bellStyle: {type: String},
     };
 
     constructor() {
         super();
         this.countingDown = false;
         this.enableButton = true;
+        this.minutes = 0;
+        this.seconds = 0;
         this.count = 0;
         this.headingStyle = 'normal';
+        this.bellStyle = 'hide-bell';
         
         
         setInterval(() =>  {
@@ -46,31 +60,44 @@ class TaskTimer extends LitElement {
        
     }
 
-    handleInput(event) {
+    updateMinutes(event) {
         // Update inputValue property with the value of the text input
-        this.count = event.target.value;
+        this.minutes = Number(event.target.value)*60;
       }
-     
+
+      updateSeconds(event) {
+        // Update inputValue property with the value of the text input
+        this.seconds = Number(event.target.value);
+      }
+
+      
       startCountdown() {
+        this.count = this.minutes + this.seconds;
+
         if(!this.countingDown) {
             this.countingDown = true;
             this.enableButton = false;
         }
+        this.headingStyle = 'normal';
+        this.bellStyle = 'hide-bell';
     }
 
     playAlarm() {
-        const audio = new Audio('http://bruitages.free.fr/horloges/sonnette_reveil.wav'); // Replace 'alarm.mp3' with the path to your alarm sound file
+        const audio = new Audio('http://bruitages.free.fr/horloges/sonnette_reveil.wav'); 
         audio.play();
         this.headingStyle = 'flash-red';
+        this.bellStyle = 'show-bell';
+
     }
        
 
     render() {
         return html`
-            <h3 class="${this.headingStyle}">Task Timer</h3>
-            <p>      <input type="text" @input=${this.handleInput}></p>
-            <button @click=${this.startCountdown} ?disabled=${!this.enableButton}>Start Countdown</button>
-            <p>Time Left: ${Math.floor(this.count / 60)}:${this.count % 60}</p>
+            <h3 class="${this.headingStyle}"><span class="${this.bellStyle}"><td class="chars">🔔</td></span>Task Timer<span class="${this.bellStyle}"><td class="chars">🔔</td></h3>
+            <p>      <input type="number" @input=${this.updateMinutes}> mins  <input type="number" @input=${this.updateSeconds}> secs</p>
+            <button @click=${this.startCountdown} ?disabled=${!this.enableButton}>Start Timer</button>
+            <!-- p> ${this.minutes}  ${this.seconds} ${this.count}</p -->
+            <p>Time Left ${Math.floor(this.count / 60)}:${String(this.count % 60).padStart(2, '0')}</p>
         `;
     }
 
