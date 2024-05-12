@@ -107,7 +107,7 @@ class EditTask extends LitElement {
     const newTask = {
       summary: formData.get('summary'),
       text: formData.get('text'),
-      priority: formData.get('priority'),
+      priority: Math.max(parseInt(formData.get('priority')) || 1, 1), // Ensure priority is at least 1
       due: due.valueOf(),
     };
     TaskModel.updateTask(this.id, newTask);
