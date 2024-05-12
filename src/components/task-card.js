@@ -55,6 +55,8 @@ class TaskCard extends LitElement {
       width: 40px;
       text-align: center;
       padding-top: 5px;
+      padding-left: 0;
+      padding-right: 0;
       margin-top: 15px;
       margin-left: auto;
       margin-right: auto;
