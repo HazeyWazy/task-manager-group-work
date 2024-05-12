@@ -32,7 +32,7 @@ class Comp2110TaskManager extends LitElement {
     main {
       display: grid;
       grid-template-rows: auto 1fr;
-      grid-template-columns: 1fr 22%;
+      grid-template-columns: 1fr 20fr;
       justify-items: center;
     }
 
@@ -40,7 +40,7 @@ class Comp2110TaskManager extends LitElement {
       margin: 10px;
       margin-bottom: 0;
       border-radius: 20px;
-      width: 73vw;
+      width: 75vw;
       display: flex;
     }
 
@@ -48,12 +48,12 @@ class Comp2110TaskManager extends LitElement {
       color: #2E323D;
       display: inline-block;
       margin-right: auto;
-      padding-left: 5px;
+      padding-left: 18px;
     }
 
     create-task {
       align-content: center;
-      padding-right: 8px;
+      padding-right: 15px;
       margin-bottom: -10px;
     }
 
