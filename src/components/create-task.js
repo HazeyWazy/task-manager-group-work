@@ -144,7 +144,7 @@ class CreateTask extends LitElement {
             category: this.category,
             summary: this.summary,
             text: this.text,
-            priority: Math.max(parseInt(this.priority) || 1, 1), // Ensure priority is at least 1
+            priority: Math.min(Math.max(parseInt(this.priority) || 1, 1), 99), // Ensure priority is between 1 and 99
             due: this.due 
         };
 
