@@ -7,7 +7,7 @@ class WeeklySummary extends LitElement {
 
     static properties = {
         header: { type: String },
-        _tasks: { type: Array }
+        _tasks: { type: Array },
     };
 
 
@@ -79,8 +79,23 @@ class WeeklySummary extends LitElement {
             overflow-wrap: break-word; /* For newer browsers */
             word-wrap: break-word; /* For older browsers */
         }
-        
 
+        p   {
+            text-align: center;
+            font-style: italic;
+            color: green;
+            animation: sparkleAnimation 1s infinite alternate;
+        }
+
+        @keyframes sparkleAnimation {
+            0% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1.1);
+            }
+          }
     `]
 
     constructor() {
@@ -124,7 +139,7 @@ class WeeklySummary extends LitElement {
                                     <div class="fDate">${new Date(task.due).toLocaleDateString()}</div>
                                 </div>
                                 <div class="task-section">
-                                    <div class="due-time">${new Date(task.due).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>    
+                                    <div class="due-time">${new Date(task.due).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>   
                                     <div class="tasks">${task.summary}</div>
                                 </div>
                             </div>
@@ -136,6 +151,7 @@ class WeeklySummary extends LitElement {
             </div>
         `;
     }
+
     getDayName(dateString) {
         const date = new Date(dateString);
         const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
