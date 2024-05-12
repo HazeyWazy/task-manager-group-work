@@ -24,7 +24,7 @@ class Task {
    *  suggested.
    */
   loadData() {
-    const URL = `${BASE_URL}tasks`;
+    const URL = `${BASE_URL}tasks?count=100`;
     const user = getUser();
     if (user) {
       this._message = undefined;
