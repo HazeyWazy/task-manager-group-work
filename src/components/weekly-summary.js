@@ -95,10 +95,8 @@ class WeeklySummary extends LitElement {
 
     _loadData() {
         const today = new Date(); 
-
         const endOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (7 - today.getDay()));
         endOfThisWeek.setHours(23, 59, 59);
-        console.log(endOfThisWeek);
 
         // Get all tasks due within the current week that are not on the Done board
         const allTasks = TaskModel.getTasks();
@@ -109,7 +107,6 @@ class WeeklySummary extends LitElement {
 
         // Sort tasks by due date in ascending order
         this._tasks.sort((a, b) => new Date(a.due) - new Date(b.due));
-        console.log(this._tasks)
         this.render();
     }
 
