@@ -10,6 +10,20 @@ class TaskTimer extends LitElement {
         height: 15px; /* text box height */
         
       }
+      
+      
+      .start-button {
+        padding: 0.6vw 2vw;
+        border-radius: 1.1vw;
+        transition-duration: 0.4s;
+        background-color: #0063D6;
+        margin-bottom: 10px;
+        border: none;
+        color: #faf9ff;
+        cursor: pointer;
+        display: inline-block;
+        width: auto;
+    }
 
     `]
     
@@ -61,12 +75,10 @@ class TaskTimer extends LitElement {
     }
 
     updateMinutes(event) {
-        // Update inputValue property with the value of the text input
         this.minutes = Number(event.target.value)*60;
       }
 
       updateSeconds(event) {
-        // Update inputValue property with the value of the text input
         this.seconds = Number(event.target.value);
       }
 
@@ -95,7 +107,7 @@ class TaskTimer extends LitElement {
         return html`
             <h3 class="${this.headingStyle}"><span class="${this.bellStyle}"><td class="chars">🔔</td></span>Task Timer<span class="${this.bellStyle}"><td class="chars">🔔</td></h3>
             <p>      <input type="number" @input=${this.updateMinutes}> mins  <input type="number" @input=${this.updateSeconds}> secs</p>
-            <button @click=${this.startCountdown} ?disabled=${!this.enableButton}>Start Timer</button>
+            <button class = "start-button" @click=${this.startCountdown} ?disabled=${!this.enableButton}>Start Timer</button>
             <!-- p> ${this.minutes}  ${this.seconds} ${this.count}</p -->
             <p>Time Left ${Math.floor(this.count / 60)}:${String(this.count % 60).padStart(2, '0')}</p>
         `;
