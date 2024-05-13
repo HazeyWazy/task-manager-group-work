@@ -12,7 +12,10 @@ class WeeklySummary extends LitElement {
 
 
     static styles = [widgetDesign, css`
-    
+
+    :host   {
+        border-bottom: none;
+    }
 
         div {
             padding : 0;
