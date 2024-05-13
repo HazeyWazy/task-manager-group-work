@@ -13,9 +13,9 @@ class WeeklySummary extends LitElement {
 
     static styles = [widgetDesign, css`
 
-    :host   {
-        border-bottom: none;
-    }
+        :host   {
+            border-bottom: none;
+        }
 
         div {
             padding : 0;
@@ -50,7 +50,6 @@ class WeeklySummary extends LitElement {
         }
         
         .nDate {
-            
             margin-right:auto;
             padding-left:15px;
         }
@@ -64,7 +63,6 @@ class WeeklySummary extends LitElement {
             display: flex;
             margin-bottom: 15px;
             padding-right: 15px;
-            
         }
         
         .due-time {
@@ -84,7 +82,7 @@ class WeeklySummary extends LitElement {
             word-wrap: break-word; /* For older browsers */
         }
 
-        p   {
+        no-task   {
             text-align: center;
             font-style: italic;
             color: green;
@@ -106,6 +104,7 @@ class WeeklySummary extends LitElement {
         super();
         this.header = 'Weekly Summary';
         this._tasks = [];
+        this.weekRange = '';
 
         window.addEventListener('tasks', () => {
             this._loadData();
@@ -114,8 +113,16 @@ class WeeklySummary extends LitElement {
 
     _loadData() {
         const today = new Date(); 
+
+        //The start date of current week
+        const startOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - ( 1 - today.getDay())); 
+
+        //The end date of current week
         const endOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (7 - today.getDay()));
         endOfThisWeek.setHours(23, 59, 59);
+
+        //The range of current week
+        this.weekRange = `${startOfThisWeek.getDate()} - ${endOfThisWeek.getDate()}`;
 
         // Get all tasks due within the current week that are not on the Done board
         const allTasks = TaskModel.getTasks();
@@ -132,10 +139,9 @@ class WeeklySummary extends LitElement {
     }
 
     render() {
-        
         return html`
             <h3>${this.header}</h3>
-
+            <p id="weekRange">(${this.weekRange})</p>
             <div class="Wsummary">
                 <!-- Check if there are tasks to display -->
                 ${this._tasks.length > 0 ? html`
@@ -155,7 +161,7 @@ class WeeklySummary extends LitElement {
                         `)}
                     </div>
                 ` : html` <!-- if there is no task to display -->
-                    <p>No tasks due this week.</p>
+                    <p id="no-task">No tasks due this week.</p>
                 `}
             </div>
         `;
@@ -163,7 +169,7 @@ class WeeklySummary extends LitElement {
 
     getDayName(dateString) {
         const date = new Date(dateString);
-        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         return dayNames[date.getDay()];
     }
 }
