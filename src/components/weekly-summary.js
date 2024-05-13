@@ -112,14 +112,15 @@ class WeeklySummary extends LitElement {
     }
 
     _loadData() {
-        const today = new Date();   
-
+        const today = new Date(2024,3,12);   
+        console.log("today",today)
         //The start date of current week
-        const startOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - ( 1 - today.getDay())); 
-
+        const startOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (today.getDay() + (today.getDay() === 0 ? 6 : -1))); 
+        console.log("start",startOfThisWeek);
         //The end date of current week
         const endOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (7 - today.getDay()));
         endOfThisWeek.setHours(23, 59, 59);
+        console.log("end",endOfThisWeek);
 
         //The range of current week
         //check if weekRange is within the same month or not
