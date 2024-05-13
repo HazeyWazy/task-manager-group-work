@@ -82,7 +82,7 @@ class WeeklySummary extends LitElement {
             word-wrap: break-word; /* For older browsers */
         }
 
-        no-task   {
+        #no-task   {
             text-align: center;
             font-style: italic;
             color: green;
@@ -112,7 +112,7 @@ class WeeklySummary extends LitElement {
     }
 
     _loadData() {
-        const today = new Date(); 
+        const today = new Date();   
 
         //The start date of current week
         const startOfThisWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - ( 1 - today.getDay())); 
@@ -122,10 +122,16 @@ class WeeklySummary extends LitElement {
         endOfThisWeek.setHours(23, 59, 59);
 
         //The range of current week
-        this.weekRange = `${startOfThisWeek.getDate()} - ${endOfThisWeek.getDate()}`;
+        //check if weekRange is within the same month or not
+        if(startOfThisWeek.getMonth() === endOfThisWeek.getMonth()){
+            this.weekRange = `${startOfThisWeek.getDate()} - ${endOfThisWeek.getDate()} ${this.getMonthName(endOfThisWeek)}` ;
+        }   else    {
+            this.weekRange = `${startOfThisWeek.getDate()} ${this.getMonthName(startOfThisWeek)} - ${endOfThisWeek.getDate()} ${this.getMonthName(endOfThisWeek)}`
+        }
 
         // Get all tasks due within the current week that are not on the Done board
         const allTasks = TaskModel.getTasks();
+        
 
         //Filtering tasks that are due this week and Not Done yet. Including tasks from prev weeks
         this._tasks = allTasks.filter(task => {
@@ -172,6 +178,13 @@ class WeeklySummary extends LitElement {
         const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         return dayNames[date.getDay()];
     }
+
+    getMonthName(dateString) {
+        const date = new Date(dateString);
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return monthNames[date.getMonth()];
+    }
+
 }
     
 customElements.define('weekly-summary', WeeklySummary);
