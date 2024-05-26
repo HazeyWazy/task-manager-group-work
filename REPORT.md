@@ -36,7 +36,7 @@ Firstly, the necessary files, such as HTML, CSS, JavaScript, or any other assets
 
 &nbsp;
 
-# Achievements 
+# What was achieved 
 
 ## Extending The Task Card
 
